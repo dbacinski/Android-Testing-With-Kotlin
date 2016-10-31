@@ -10,7 +10,10 @@ import android.widget.TextView;
 import com.example.unittesting.R;
 import com.example.unittesting.model.ResourceProvider;
 import com.example.unittesting.model.login.LoginCredentials;
+import com.example.unittesting.model.login.LoginService;
+import com.example.unittesting.model.login.LoginUseCase;
 import com.example.unittesting.model.login.LoginValidator;
+import com.example.unittesting.presenter.SchedulersFactory;
 import com.example.unittesting.presenter.login.LoginPresenter;
 import com.example.unittesting.presenter.login.LoginView;
 
@@ -53,7 +56,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
             }
         });
 
-        loginPresenter = new LoginPresenter(new ResourceProvider(getResources()), new LoginValidator());
+        loginPresenter = new LoginPresenter(new ResourceProvider(getResources()), new LoginValidator(), new LoginUseCase(new LoginService()), new SchedulersFactory());
 
         loginPresenter.createView(this);
     }

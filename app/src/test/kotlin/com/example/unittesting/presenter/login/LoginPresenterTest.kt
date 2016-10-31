@@ -3,22 +3,31 @@ package com.example.unittesting.presenter.login
 import android.content.res.Resources
 import com.example.unittesting.model.ResourceProvider
 import com.example.unittesting.model.login.LoginCredentials
+import com.example.unittesting.model.login.LoginService
+import com.example.unittesting.model.login.LoginUseCase
 import com.example.unittesting.model.login.LoginValidator
-import org.junit.Ignore
+import com.example.unittesting.presenter.SchedulersFactory
+import io.reactivex.ObservableTransformer
+import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyInt
 import org.mockito.BDDMockito.given
 import org.mockito.Mockito
-import org.mockito.Mockito.verify
+import org.mockito.Mockito.*
 
 class LoginPresenterTest {
 
     val loginViewMock: LoginView = Mockito.mock(LoginView::class.java)
     val resourcesMock: Resources = Mockito.mock(Resources::class.java)
+    val schedulersFactoryMock: SchedulersFactory = Mockito.mock(SchedulersFactory::class.java)
 
-    val objectUnderTest = LoginPresenter(ResourceProvider(resourcesMock), LoginValidator())
+    val objectUnderTest = LoginPresenter(ResourceProvider(resourcesMock), LoginValidator(), LoginUseCase(LoginService()), schedulersFactoryMock)
 
-    @Ignore("remove AsyncTask first")
+    @Before
+    fun setUp() {
+        removeObserveOnMainThreadScheduler()
+    }
+
     @Test
     fun loginWithCorrectData() {
         //given
@@ -28,8 +37,36 @@ class LoginPresenterTest {
         //when
         objectUnderTest.attemptLogin(LoginCredentials().withLogin(login).withPassword(password))
         //then
-        verify(loginViewMock).showProgress()
-        verify(loginViewMock).onLoginSuccessful()
+        verify(loginViewMock, timeout(5000)).onLoginSuccessful()
+    }
+
+    @Test
+    fun loginWithCorrectDataWithProgressIndication() {
+        //given
+        objectUnderTest.createView(loginViewMock)
+        val login = "any"
+        val password = "anyValidPassword"
+        //when
+        objectUnderTest.attemptLogin(LoginCredentials().withLogin(login).withPassword(password))
+        //then
+        val ordered = inOrder(loginViewMock)
+        ordered.verify(loginViewMock).showProgress()
+        ordered.verify(loginViewMock, timeout(5000)).hideProgress()
+    }
+
+    @Test
+    fun showValidationErrorForIncorrectData() {
+        //given
+        objectUnderTest.createView(loginViewMock)
+        given(resourcesMock.getString(anyInt())).willReturn("error")
+        val login = "dbacinski"
+        val password = "incorrect"
+        //when
+        objectUnderTest.attemptLogin(LoginCredentials().withLogin(login).withPassword(password))
+        //then
+        val ordered = inOrder(loginViewMock)
+        ordered.verify(loginViewMock).showPasswordError(null)
+        ordered.verify(loginViewMock, timeout(5000)).showPasswordError("error")
     }
 
     @Test
@@ -72,5 +109,9 @@ class LoginPresenterTest {
         //then
         verify(loginViewMock).showLoginError(null)
         verify(loginViewMock).showPasswordError("error")
+    }
+
+    private fun removeObserveOnMainThreadScheduler() {
+        given(schedulersFactoryMock.createMainThreadSchedulerTransformer<Boolean>()).willReturn(ObservableTransformer { it })
     }
 }

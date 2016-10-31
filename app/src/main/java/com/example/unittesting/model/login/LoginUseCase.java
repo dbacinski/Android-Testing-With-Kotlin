@@ -1,5 +1,10 @@
 package com.example.unittesting.model.login;
 
+import java.util.concurrent.Callable;
+import java.util.concurrent.TimeUnit;
+
+import io.reactivex.Observable;
+
 public class LoginUseCase {
 
     LoginService loginService;
@@ -8,9 +13,16 @@ public class LoginUseCase {
         this.loginService = loginService;
     }
 
-    public boolean loginWithCredentialsWithStatus(LoginCredentials credentials) {
+    public Observable<Boolean> loginWithCredentialsWithStatus(final LoginCredentials credentials) {
         checkNotNull(credentials);
-        return loginService.login(credentials.login, credentials.password);
+        return Observable.fromCallable(
+                new Callable<Boolean>() {
+                    @Override
+                    public Boolean call() throws Exception {
+                        return loginService.login(credentials.login, credentials.password);
+                    }
+                }
+        ).delay(1000, TimeUnit.MILLISECONDS);
     }
 
     private void checkNotNull(LoginCredentials credentials) {
