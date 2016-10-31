@@ -1,4 +1,4 @@
-package com.example.unittesting.presenter;
+package com.example.unittesting.domain;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;

@@ -1,12 +1,12 @@
 package com.example.unittesting.presenter.login
 
 import android.content.res.Resources
-import com.example.unittesting.model.ResourceProvider
-import com.example.unittesting.model.login.LoginCredentials
-import com.example.unittesting.model.login.LoginService
-import com.example.unittesting.model.login.LoginUseCase
-import com.example.unittesting.model.login.LoginValidator
-import com.example.unittesting.presenter.SchedulersFactory
+import com.example.unittesting.domain.ResourceProvider
+import com.example.unittesting.domain.SchedulersFactory
+import com.example.unittesting.domain.login.LoginUseCase
+import com.example.unittesting.entity.login.LoginCredentials
+import com.example.unittesting.entity.login.LoginRepository
+import com.example.unittesting.entity.login.LoginValidator
 import io.reactivex.ObservableTransformer
 import org.junit.Before
 import org.junit.Test
@@ -21,7 +21,7 @@ class LoginPresenterTest {
     val resourcesMock: Resources = Mockito.mock(Resources::class.java)
     val schedulersFactoryMock: SchedulersFactory = Mockito.mock(SchedulersFactory::class.java)
 
-    val objectUnderTest = LoginPresenter(ResourceProvider(resourcesMock), LoginValidator(), LoginUseCase(LoginService()), schedulersFactoryMock)
+    val objectUnderTest = LoginPresenter(ResourceProvider(resourcesMock), LoginValidator(), LoginUseCase(LoginRepository()), schedulersFactoryMock)
 
     @Before
     fun setUp() {

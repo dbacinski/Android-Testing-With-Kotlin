@@ -1,4 +1,7 @@
-package com.example.unittesting.model.login;
+package com.example.unittesting.domain.login;
+
+import com.example.unittesting.entity.login.LoginCredentials;
+import com.example.unittesting.entity.login.LoginRepository;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
@@ -7,10 +10,10 @@ import io.reactivex.Observable;
 
 public class LoginUseCase {
 
-    LoginService loginService;
+    LoginRepository loginRepository;
 
-    public LoginUseCase(LoginService loginService) {
-        this.loginService = loginService;
+    public LoginUseCase(LoginRepository loginRepository) {
+        this.loginRepository = loginRepository;
     }
 
     public Observable<Boolean> loginWithCredentialsWithStatus(final LoginCredentials credentials) {
@@ -19,7 +22,7 @@ public class LoginUseCase {
                 new Callable<Boolean>() {
                     @Override
                     public Boolean call() throws Exception {
-                        return loginService.login(credentials.login, credentials.password);
+                        return loginRepository.login(credentials.login, credentials.password);
                     }
                 }
         ).delay(1000, TimeUnit.MILLISECONDS);

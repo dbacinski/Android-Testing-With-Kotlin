@@ -1,12 +1,12 @@
 package com.example.unittesting.presenter.login;
 
 import com.example.unittesting.R;
-import com.example.unittesting.model.ResourceProvider;
-import com.example.unittesting.model.login.LoginCredentials;
-import com.example.unittesting.model.login.LoginUseCase;
-import com.example.unittesting.model.login.LoginValidator;
+import com.example.unittesting.domain.ResourceProvider;
+import com.example.unittesting.domain.SchedulersFactory;
+import com.example.unittesting.domain.login.LoginUseCase;
+import com.example.unittesting.entity.login.LoginCredentials;
+import com.example.unittesting.entity.login.LoginValidator;
 import com.example.unittesting.presenter.BasePresenter;
-import com.example.unittesting.presenter.SchedulersFactory;
 
 import io.reactivex.functions.Consumer;
 

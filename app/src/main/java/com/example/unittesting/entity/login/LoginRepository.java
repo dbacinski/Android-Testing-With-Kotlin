@@ -1,8 +1,8 @@
-package com.example.unittesting.model.login;
+package com.example.unittesting.entity.login;
 
 import timber.log.Timber;
 
-public class LoginService {
+public class LoginRepository {
 
     static final String CORRECT_LOGIN = "dbacinski";
     static final String CORRECT_PASSWORD = "correct";

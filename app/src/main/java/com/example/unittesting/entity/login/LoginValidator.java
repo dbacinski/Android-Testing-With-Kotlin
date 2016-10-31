@@ -1,4 +1,4 @@
-package com.example.unittesting.model.login;
+package com.example.unittesting.entity.login;
 
 public class LoginValidator {
 
