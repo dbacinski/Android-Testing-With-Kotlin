@@ -5,6 +5,9 @@
 ### 1.1 Model
 
 #### 1.1.1 Entity
+- Contains implementation of Business Rules
+- Should not contain platform or application specific implementation
+- It is least like to change when something external changes
 
 #### 1.1.2 Domain
 
