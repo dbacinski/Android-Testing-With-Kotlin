@@ -29,7 +29,7 @@ class LoginPresenterTest {
     }
 
     @Test
-    fun loginWithCorrectData() {
+    fun `login with correct data`() {
         //given
         objectUnderTest.createView(loginViewMock)
         val login = "dbacinski"
@@ -41,7 +41,7 @@ class LoginPresenterTest {
     }
 
     @Test
-    fun loginWithCorrectDataWithProgressIndication() {
+    fun `login with correct data with progress indication`() {
         //given
         objectUnderTest.createView(loginViewMock)
         val login = "any"
@@ -55,7 +55,7 @@ class LoginPresenterTest {
     }
 
     @Test
-    fun showValidationErrorForIncorrectData() {
+    fun `show validation error for incorrect data`() {
         //given
         objectUnderTest.createView(loginViewMock)
         given(resourcesMock.getString(anyInt())).willReturn("error")
@@ -70,7 +70,7 @@ class LoginPresenterTest {
     }
 
     @Test
-    fun showValidationErrorForEmptyEmail() {
+    fun `show validation error for empty email`() {
         //given
         objectUnderTest.createView(loginViewMock)
         given(resourcesMock.getString(anyInt())).willReturn("error")
@@ -84,7 +84,7 @@ class LoginPresenterTest {
     }
 
     @Test
-    fun showValidationErrorForEmptyEmailAndPassword() {
+    fun `show validation error for empty email and password`() {
         //given
         objectUnderTest.createView(loginViewMock)
         given(resourcesMock.getString(anyInt())).willReturn("error")
@@ -98,7 +98,7 @@ class LoginPresenterTest {
     }
 
     @Test
-    fun showValidationErrorForEmptyPassword() {
+    fun `show validation error for empty password`() {
         //given
         objectUnderTest.createView(loginViewMock)
         given(resourcesMock.getString(anyInt())).willReturn("error")

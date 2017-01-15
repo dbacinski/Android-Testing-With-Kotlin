@@ -10,7 +10,7 @@ class BasePresenterTest {
     val objectUnderTest = BasePresenter<TestView>()
 
     @Test
-    fun disposeObservablesOnDestroyView() {
+    fun `dispose observables on destroy view`() {
         //given
         val disposable = Observable.interval(100, TimeUnit.MILLISECONDS).subscribe()
         objectUnderTest.bindToLifecycle(disposable)
@@ -21,7 +21,7 @@ class BasePresenterTest {
     }
 
     @Test
-    fun cleanViewReferenceOnDestroyView() {
+    fun `clean view reference on destroy view`() {
         //given
         objectUnderTest.createView(TestView())
         //when

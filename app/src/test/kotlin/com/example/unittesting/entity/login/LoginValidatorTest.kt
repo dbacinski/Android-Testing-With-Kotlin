@@ -9,7 +9,7 @@ class LoginValidatorTest {
     val objectUnderTest = LoginValidator()
 
     @Test
-    fun emptyLoginIsInvalid() {
+    fun `empty login is invalid`() {
         //when
         val result = objectUnderTest.validateLogin("")
         //then
@@ -17,7 +17,7 @@ class LoginValidatorTest {
     }
 
     @Test
-    fun notEmptyLoginIsValid() {
+    fun `not empty login is valid`() {
         //when
         val result = objectUnderTest.validateLogin("anyLogin")
         //then
@@ -25,7 +25,7 @@ class LoginValidatorTest {
     }
 
     @Test
-    fun throwsExceptionForNullLogin() {
+    fun `throws exception for null login`() {
         //when
         val catchThrowable = catchThrowable { objectUnderTest.validateLogin(null) }
         //then
@@ -33,7 +33,7 @@ class LoginValidatorTest {
     }
 
     @Test
-    fun emptyPasswordIsInvalid() {
+    fun `empty password is invalid`() {
         //when
         val result = objectUnderTest.validatePassword("")
         //then
@@ -41,7 +41,7 @@ class LoginValidatorTest {
     }
 
     @Test
-    fun throwsExceptionForNullPassword() {
+    fun `throws exception for null password`() {
         //when
         val catchThrowable = catchThrowable { objectUnderTest.validatePassword(null) }
         //then
@@ -49,7 +49,7 @@ class LoginValidatorTest {
     }
 
     @Test
-    fun passwordIsInvalidIfShorterThenLimit() {
+    fun `password is invalid if shorter then limit`() {
         //when
         val result = objectUnderTest.validatePassword("12345")
         //then
@@ -57,7 +57,7 @@ class LoginValidatorTest {
     }
 
     @Test
-    fun passwordIsValidIfEqualToLimit() {
+    fun `password is valid if equal to limit`() {
         //when
         val result = objectUnderTest.validatePassword("123456")
         //then
@@ -65,7 +65,7 @@ class LoginValidatorTest {
     }
 
     @Test
-    fun passwordIsValidIfLongerThanLimit() {
+    fun `password is valid if longer than limit`() {
         //when
         val result = objectUnderTest.validatePassword("1234567")
         //then

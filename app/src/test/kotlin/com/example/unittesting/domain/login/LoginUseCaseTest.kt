@@ -11,7 +11,7 @@ class LoginUseCaseTest {
     val objectUnderTest = LoginUseCase(Mockito.mock(LoginRepository::class.java))
 
     @Test
-    fun throwsExceptionForNullLoginCredentials() {
+    fun `throws exception for null LoginCredentials`() {
         //given
         val loginCredentials = null
         //when

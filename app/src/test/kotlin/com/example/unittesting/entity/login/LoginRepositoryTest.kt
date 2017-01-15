@@ -10,7 +10,7 @@ class LoginRepositoryTest {
     val objectUnderTest = LoginRepository()
 
     @Test
-    fun loginWithCorrectLoginAndPassword() {
+    fun `login with correct login and password`() {
         //given
         val login = CORRECT_LOGIN
         val password = CORRECT_PASSWORD
@@ -21,7 +21,7 @@ class LoginRepositoryTest {
     }
 
     @Test
-    fun doNotLoginWithCorrectLoginOnly() {
+    fun `do not login with only correct login`() {
         //given
         val login = CORRECT_LOGIN
         val password = "anyPassword"
@@ -32,7 +32,7 @@ class LoginRepositoryTest {
     }
 
     @Test
-    fun doNotLoginWithCorrectPasswordOnly() {
+    fun `do not login with only correct password`() {
         //given
         val login = "anyLogin"
         val password = CORRECT_PASSWORD
