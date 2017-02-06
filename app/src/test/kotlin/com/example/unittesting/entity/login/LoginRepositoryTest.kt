@@ -2,7 +2,6 @@ package com.example.unittesting.entity.login
 
 import com.example.unittesting.entity.login.LoginRepository.CORRECT_LOGIN
 import com.example.unittesting.entity.login.LoginRepository.CORRECT_PASSWORD
-import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 
 class LoginRepositoryTest {
@@ -17,7 +16,8 @@ class LoginRepositoryTest {
         //when
         val result = objectUnderTest.login(login, password)
         //then
-        assertThat(result).isTrue()
+        result.test().await()
+                .assertResult(true)
     }
 
     @Test
@@ -28,7 +28,8 @@ class LoginRepositoryTest {
         //when
         val result = objectUnderTest.login(login, password)
         //then
-        assertThat(result).isFalse()
+        result.test().await()
+                .assertResult(false)
     }
 
     @Test
@@ -39,6 +40,7 @@ class LoginRepositoryTest {
         //when
         val result = objectUnderTest.login(login, password)
         //then
-        assertThat(result).isFalse()
+        result.test().await()
+                .assertResult(false)
     }
 }
