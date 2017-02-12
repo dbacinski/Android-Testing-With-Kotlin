@@ -27,7 +27,7 @@ Now when we have an application to be tested we can create our first test. We wi
 
 ## My first test
 
-To create our first test we have to create class with public method annotated with @org.junit.Test in folder /src/test/kotlin. This way we tell JUnit4 where is test code located. We can start with checking if our app allows to login with correct data. We will instrument LoginPresenter and to do that I have created LoginPresenterTest class with `login with correct data` test method.
+To create our first test we have to create class with public method annotated with `@org.junit.Test` in folder `/src/test/kotlin`. This way we tell JUnit4 where is test code located. We can start with checking if our app allows to login with correct data. We will instrument LoginPresenter and to do that I have created LoginPresenterTest class with `login with correct data` test method.
 
 ```
 class LoginPresenterTest {
