@@ -69,7 +69,7 @@ Out test begings with `given` block in which we will prepare our test data and c
 
 I am crating instane [link] of our tested object `LoginRepository` and assign it to read-only property [link] . It is very convinient to distinguish tested object from test parammeters so I am calling it `objectUnderTest`. You can also name it: `sut`, `subject` or `target`. Choose the name which fits you best just be cosistient across your project.
 
-When we have tested object then we can move on to test parameters That will be `correctLogin` with value `'dbacinski'` and `correctPassword` with value `'correct'`. Now `given` block is finished and we can move on.
+When we have tested object then we can move on to test parameters That will be `correctLogin` with value `'dbacinski'` and `correctPassword` with value `'correct'`. It is very important to choose meaningful names for each test parameter, that will describe what kind of value it contains.
 
 ```
     @Test
@@ -77,7 +77,7 @@ When we have tested object then we can move on to test parameters That will be `
         //given
         val objectUnderTest = LoginRepository()
         val correctLogin = 'dbacinski'
-        val password = `correct`
+        val correctPassword = `correct`
         //when
 
         //then
@@ -85,9 +85,13 @@ When we have tested object then we can move on to test parameters That will be `
     }
 ```
 
-#### When Block
+Now `given` block is finished and we can move on.
 
-#### Then Block
+## When Block
+
+
+
+## Then Block
 
 ## Testing state
 
