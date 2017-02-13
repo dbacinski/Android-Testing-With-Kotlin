@@ -27,19 +27,19 @@ Now when we have an application to be tested we can create our first test. We wi
 
 ## My first test
 
-To create our first test we have to create class with public method annotated with `@org.junit.Test` and in folder `/src/test/kotlin`. This way we tell JUnit4 where is test code located. We can start with checking if our app allows to login with correct data. We will instrument LoginPresenter, to do that I have created LoginPresenterTest class with test method. At the beggining we want to test if it is possible to sign in with correct credentials, so I have created test method with name `login with correct data`.
+To create our first test we have to create class with public method annotated with `@org.junit.Test` and in folder `/src/test/kotlin`. This way we tell JUnit4 where is test code located. We can start with checking if our app allows to login with correct data. We will instrument LoginRepository, to do that I have created LoginRepositoryTest class with test method. At the beggining we want to test if it is possible to sign in with correct credentials, so I have created test method with name `login with correct login and password`.
 
 ```
-class LoginPresenterTest {
+class LoginRepositoryTest {
 
     @Test
-    fun `login with correct data`() {
+    fun `login with correct login and password`() {
     
     }
 }
 ```
 
-In Kotlin we can name test with natural names like `login with correct data` but it only applies to code which is run on JVM. Thankfully unit tests are run on JVM and we can use such a descriptive names. 
+In Kotlin we can name test with natural names like `login with correct login and password` but it only applies to code which is run on JVM. Thankfully unit tests are run on JVM and we can use such a descriptive names. 
 
 ## Test structure
 
@@ -53,7 +53,7 @@ JUnit4 do not separate test blocks in any way so it is convenient to add comment
 
 ```
     @Test
-    fun `login with correct data`() {
+    fun `login with correct login and password`() {
       //given
       
       //when
@@ -63,11 +63,27 @@ JUnit4 do not separate test blocks in any way so it is convenient to add comment
     }
 ```
 
+## Given Block
 
+Out test begings with `given` block in which we will prepare our test data and create tested object. 
 
+I am crating instane [link] of our tested object `LoginRepository` and assign it to read-only property [link] . It is very convinient to distinguish tested object from test parammeters so I am calling it `objectUnderTest`. You can also name it: `sut`, `subject` or `target`. Choose the name which fits you best just be cosistient across your project.
 
+When we have tested object then we can move on to test parameters That will be `correctLogin` with value `'dbacinski'` and `correctPassword` with value `'correct'`. Now `given` block is finished and we can move on.
 
-#### Given Block
+```
+    @Test
+    fun `login with correct login and password`() {
+        //given
+        val objectUnderTest = LoginRepository()
+        val correctLogin = 'dbacinski'
+        val password = `correct`
+        //when
+
+        //then
+        
+    }
+```
 
 #### When Block
 
