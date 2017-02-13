@@ -65,9 +65,9 @@ JUnit4 do not separate test blocks in any way so it is convenient to add comment
 
 ## Given Block
 
-Out test begings with `given` block in which we will prepare our test data and create tested object. 
+Out test begins with `given` block in which we will prepare our test data and create tested object. 
 
-I am crating instane [link] of our tested object `LoginRepository` and assign it to read-only property [link] . It is very convinient to distinguish tested object from test parammeters so I am calling it `objectUnderTest`. You can also name it: `sut`, `subject` or `target`. Choose the name which fits you best just be cosistient across your project.
+I am creating instance [link] of tested object `LoginRepository` and assign it to read-only property [link] . It is very convenient to distinguish tested object from test parameters so I am calling it `objectUnderTest`. You can also name it: `sut`, `subject` or `target`. Choose the name which fits you best just be consistent across your project.
 
 When we have tested object then we can move on to test parameters That will be `correctLogin` with value `'dbacinski'` and `correctPassword` with value `'correct'`. It is very important to choose meaningful names for each test parameter, that will describe what kind of value it contains.
 
