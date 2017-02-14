@@ -127,6 +127,8 @@ Now it is time to verify if tested objects returns value that we expect. But fir
 
 We can run a test by pressing `Ctrl + Shift + F10` in Android Studio/IntelliJ or from Terminal using command `./gradlew test`.
 
+## Test failure
+
 When the assertion from `then` block won't be sattified then test will fail with following output:
 
 ```
