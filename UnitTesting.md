@@ -1,4 +1,4 @@
-# Introduction to Unit Testing [Work in Progress]
+# Introduction to Unit Testing
 
 You have heard good stuff about unit testing and finally want to learn about it? This is a place for you! 
 
