@@ -89,7 +89,7 @@ Now `given` block is finished and we can move on.
 
 ## When Block
 
-In `when` block we have to call method that we want to test with parameters that were prepared in the `given` block. So I call method `objectUnderTest.login(correctLogin, correctPassword)`. In `when` block we should have only one line of code to make it clear what is actually tested.
+In `when` block we have to call method that we want to test with parameters that were prepared in the `given` block. So I call method `objectUnderTest.login(correctLogin, correctPassword)`. In `when` block we should have only one line of code to make it clear what is actually being tested. 
 
 ```
     @Test
