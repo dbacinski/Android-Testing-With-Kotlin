@@ -107,6 +107,8 @@ In `when` block we have to call method that we want to test with parameters that
 
 ## Then Block
 
+Now it is time to verify if tested objects returns value that we expect. But first we have to store result of tested method in property `val result` and then examine it in the `then` block. To check expected value we have to do an assertion. In this case returned object is RxJava 2 Observable and we can convert it easily to `TestObserver` which provide assertion methods. I am checking if returned value is `true` otherwise test will fail.
+
 ```
     @Test
     fun `login with correct login and password`() {
@@ -117,15 +119,26 @@ In `when` block we have to call method that we want to test with parameters that
         //when
         val result = objectUnderTest.login(login, password)
         //then
-        result.test().await()
-                .assertResult(true)
-        
+        result.test().assertResult(true)
     }
 ```
 
-## Testing state
+## Running test
 
-## Testing interactions
+We can run a test by pressing `Ctrl + Shift + F10` in Android Studio/IntelliJ or from Terminal using command `./gradlew test`.
 
+When the assertion from `then` block won't be sattified then test will fail with following output:
 
+```
+java.lang.AssertionError: Values at position 0 differ; Expected: true (class: Boolean), Actual: false (class: Boolean) (latch = 0, values = 1, errors = 0, completions = 1)
 
+	at io.reactivex.observers.BaseTestConsumer.fail(BaseTestConsumer.java:133)
+	at io.reactivex.observers.BaseTestConsumer.assertValues(BaseTestConsumer.java:411)
+	at io.reactivex.observers.BaseTestConsumer.assertResult(BaseTestConsumer.java:613)
+	at com.example.unittesting.entity.login.LoginRepositoryTest.login with correct login and password(LoginRepositoryTest.kt:20)
+	...
+
+Process finished with exit code 255
+```
+
+We have an information that expected value should be `true (class: Boolean)` but actual value returned by tested object was `false (class: Boolean)`. We also can see that failed test has name `login with correct login and password` and is in the class `LoginRepositoryTest`. Assertion has failed at line `20` in file `LoginRepositoryTest.kt`. Thanks to such informative error message we can figure out exactly which assertion was not satisfied and fix tested object.
