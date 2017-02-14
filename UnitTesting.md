@@ -129,7 +129,7 @@ We can run a test by pressing `Ctrl + Shift + F10` in Android Studio/IntelliJ or
 
 ## Test failure
 
-When the assertion from `then` block won't be sattified then test will fail with following output:
+When the assertion from `then` block won't be sattified then test will fail with following (or similar) output:
 
 ```
 java.lang.AssertionError: Values at position 0 differ; Expected: true (class: Boolean), Actual: false (class: Boolean) (latch = 0, values = 1, errors = 0, completions = 1)
