@@ -4,9 +4,11 @@
 
 This project serves as an example for set of articles about testing:
 
-#### [1. Introduction to Unit Testing \[Work in Progress\]](/UnitTesting.md)
+#### [1. Introduction to Unit Testing](/UnitTesting.md)
 
-#### [2. Clean Architecture with Model View Presenter \[Work in Progress\]](/CleanArchitecture.md)
+#### [2. Unit Testing with Mockito 2 \[Work in Progress\]]()
+
+#### [3. Clean Architecture with Model View Presenter \[Work in Progress\]](/CleanArchitecture.md)
 
 
 
