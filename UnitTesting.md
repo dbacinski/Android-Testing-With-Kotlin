@@ -107,6 +107,22 @@ In `when` block we have to call method that we want to test with parameters that
 
 ## Then Block
 
+```
+    @Test
+    fun `login with correct login and password`() {
+        //given
+        val objectUnderTest = LoginRepository()
+        val correctLogin = 'dbacinski'
+        val correctPassword = `correct`
+        //when
+        val result = objectUnderTest.login(login, password)
+        //then
+        result.test().await()
+                .assertResult(true)
+        
+    }
+```
+
 ## Testing state
 
 ## Testing interactions
