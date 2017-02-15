@@ -4,7 +4,7 @@
 
 This project serves as an example for set of articles about testing:
 
-#### [1. Introduction to Unit Testing](/Unit-Testing-Introduction.md)
+#### [1. Introduction to Unit Testing with Kotlin](/Unit-Testing-Introduction.md)
 
 #### [2. Unit Testing with Mockito 2 \[Work in Progress\]](/Unit-Testing-Mockito.md)
 
