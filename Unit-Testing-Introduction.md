@@ -67,7 +67,7 @@ JUnit4 do not separate test blocks in any way so it is convenient to add comment
 
 Out test begins with `given` block in which we will prepare our test data and create tested object. 
 
-I am creating instance [link] of tested object `LoginRepository` and assign it to [read-only property](https://kotlinlang.org/docs/reference/properties.html#declaring-properties). It is very convenient to distinguish tested object from test parameters so I am calling it `objectUnderTest`. You can also name it: `sut`, `subject` or `target`. Choose the name which fits you best just be consistent across your project.
+I am [creating instance](https://kotlinlang.org/docs/reference/classes.html#creating-instances-of-classes) of tested object `LoginRepository` and assign it to [read-only property](https://kotlinlang.org/docs/reference/properties.html#declaring-properties). It is very convenient to distinguish tested object from test parameters so I am calling it `objectUnderTest`. You can also name it: `sut`, `subject` or `target`. Choose the name which fits you best just be consistent across your project.
 
 When we have instance of tested object then we can move on to test parameters. That will be `correctLogin` with value `'dbacinski'` and `correctPassword` with value `'correct'`. It is very important to choose meaningful names for each test parameter, it must be clear what kind of values each of them contains.
 
