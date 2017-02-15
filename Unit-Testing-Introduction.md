@@ -16,18 +16,18 @@ Unit Test is focused on testing only set of classes (one or more) that are focus
 
 ### Simple Android application
 
-Before creating any test I want to introduce you to an simple Android app that provides a login screen. It has two inputs for login and password, and it validates those inputs. When the inputs are valid we can sign in with correct data or get an error that credentials are incorrect. I have chosen MVP architecture, which will help us to write very fast test that do not depends on Android framework. If you are not familiar with this architecture then please read [this] article.
+Before creating any test I want to introduce you to an simple Android app that provides a login screen. It has two inputs for login and password, and it validates those inputs. When the inputs are valid we can sign in with correct data or get an error that credentials are incorrect. I have chosen MVP architecture, which will help us to write very fast test that do not depends on Android framework. If you are not familiar with this architecture then please read [this article](http://macoscope.com/blog/model-view-presenter-architecture-in-android-applications/).
 
 [Screen - without input]
 [Screen - with invalid input]
 
 ## Project setup
 
-Now when we have an application to be tested we can create our first test. We will use Junit4 test runner and Kotlin programming language. Test runner is a library that runs our test code and aggregate results in a friendly way. I won't go into deatils how setup Android project with tests written in Kotlin, because there is a great [article] that describe it in details.
+Now when we have an application to be tested then we can create our first test. We will use [Junit4](https://github.com/junit-team/junit4/wiki/getting-started) test runner and Kotlin programming language. Test runner is a library that runs our test code and aggregate results in a friendly way. I won't go into deatils how setup Android project with tests written in Kotlin, because there is a great [article](http://fernandocejas.com/2017/02/03/android-testing-with-kotlin/) that describe it in details. You can also check [Android-Testing-In-Kotlin project](/app/build.gradle) setup.
 
 ## My first test
 
-To create our first test we have to create class with public method annotated with `@org.junit.Test` and in folder `/src/test/kotlin`. This way we tell JUnit4 where is test code located. We can start with checking if our app allows to login with correct data. We will instrument LoginRepository, to do that I have created LoginRepositoryTest class with test method. At the beggining we want to test if it is possible to sign in with correct credentials, so I have created test method with name `login with correct login and password`.
+To create our first test we have to create class with public method annotated with `@org.junit.Test` and in folder `/src/test/kotlin`. This way we tell JUnit4 where is test code located. We can start with checking if our app allows to login with correct data. We will instrument [LoginRepository](app/src/main/java/com/example/unittesting/entity/login/LoginRepository.java), to do that I have created [LoginRepositoryTest](/app/src/test/kotlin/com/example/unittesting/entity/login/LoginRepositoryTest.kt) class with test method. At the beggining we want to test if it is possible to sign in with correct credentials, so I have created test method with name `login with correct login and password`.
 
 ```
 class LoginRepositoryTest {
@@ -67,7 +67,7 @@ JUnit4 do not separate test blocks in any way so it is convenient to add comment
 
 Out test begins with `given` block in which we will prepare our test data and create tested object. 
 
-I am creating instance [link] of tested object `LoginRepository` and assign it to read-only property [link] . It is very convenient to distinguish tested object from test parameters so I am calling it `objectUnderTest`. You can also name it: `sut`, `subject` or `target`. Choose the name which fits you best just be consistent across your project.
+I am creating instance [link] of tested object `LoginRepository` and assign it to [read-only property](https://kotlinlang.org/docs/reference/properties.html#declaring-properties). It is very convenient to distinguish tested object from test parameters so I am calling it `objectUnderTest`. You can also name it: `sut`, `subject` or `target`. Choose the name which fits you best just be consistent across your project.
 
 When we have instance of tested object then we can move on to test parameters. That will be `correctLogin` with value `'dbacinski'` and `correctPassword` with value `'correct'`. It is very important to choose meaningful names for each test parameter, it must be clear what kind of values each of them contains.
 
