@@ -16,10 +16,11 @@ Unit Test is focused on testing only set of classes (one or more) that fulfils s
 
 ### Simple Android application
 
-Before creating any test I want to introduce you to an simple Android app that provides a login screen. It has two inputs for login and password, and it validates those inputs. When the inputs are valid we can sign in with correct data or get an error that credentials are incorrect. I have chosen MVP architecture, which will help us to write very fast test that deos not depend on Android framework. If you are not familiar with this architecture then please read[this article](http://macoscope.com/blog/model-view-presenter-architecture-in-android-applications/).
+Before creating any test I want to introduce you to an simple Android app that provides a login screen. It has two inputs for login and password, and it validates those inputs. When the inputs are valid we can sign in with correct data or get an error that credentials are incorrect. I have chosen MVP architecture, which will help us to write very fast test that deos not depend on Android framework. If you are not familiar with this architecture then please read [this article](http://macoscope.com/blog/model-view-presenter-architecture-in-android-applications/).
 
-[Screen - without input]
-[Screen - with invalid input]
+<p align="center">
+  <img src="assets/login_validation.png" alt="Sample application with validation error" width="33%" height="33%"/>
+</p>
 
 ## Project setup
 
@@ -130,7 +131,9 @@ We can run a test by pressing `Ctrl + Shift + F10` in Android Studio/IntelliJ or
 
 After running test that we have just written you should get a green bar in IDE or `BUILD SUCCESSFUL` output in the Terminal.
 
-[Screen Shot - test passed]
+<p align="center">
+  <img src="assets/ide_success.png" alt="Passed test in IDE"/>
+</p>
 
 ## Test failure
 
