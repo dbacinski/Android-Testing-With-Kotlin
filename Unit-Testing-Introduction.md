@@ -128,7 +128,7 @@ Now it is time to verify if tested objects return value that we expect. But firs
 
 We can run a test by pressing `Ctrl + Shift + F10` in Android Studio/IntelliJ or from a Terminal using command `./gradlew test`.
 
-After running test that we have just written you should get a green bar in IDE or `BUILD SUCCESS` in a Terminal.
+After running test that we have just written you should get a green bar in IDE or `BUILD SUCCESSFUL` output in the Terminal.
 
 [Screen Shot - test passed]
 
