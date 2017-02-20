@@ -14,6 +14,8 @@ But wait a second! You probably heard about UI and Integration Tests which do ex
 
 Unit Test is focused on testing only set of classes (one or more) that fulfils single functionality (domain) and do not depend on libraries or framework code. You do not want to test libraries that you are using (at least not in an Unit Test), they should just work! You want to focus only on your precious code and prove yourself that there are no hidden bugs.
 
+If you want to read more about test types you can read [this article] (https://testing.googleblog.com/2015/04/just-say-no-to-more-end-to-end-tests.html).
+
 ### Simple Android application
 
 Before creating any test I want to introduce you to an simple Android app that provides a login screen. It has two inputs for login and password, and it validates those inputs. When the inputs are valid we can sign in with correct data or get an error that credentials are incorrect. I have chosen MVP architecture, which will help us to write very fast test that does not depend on Android framework. If you are not familiar with this architecture then please read [this article](http://macoscope.com/blog/model-view-presenter-architecture-in-android-applications/).
