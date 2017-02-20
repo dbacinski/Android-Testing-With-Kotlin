@@ -14,7 +14,7 @@ But wait a second! You probably heard about UI and Integration Tests which do ex
 
 Unit Test is focused on testing only set of classes (one or more) that fulfils single functionality (domain) and do not depend on libraries or framework code. You do not want to test libraries that you are using (at least not in an Unit Test), they should just work! You want to focus only on your precious code and prove yourself that there are no hidden bugs.
 
-If you want to read more about test types you can read [this article] (https://testing.googleblog.com/2015/04/just-say-no-to-more-end-to-end-tests.html).
+If you want to read more about test types you can read [this article] (https://testing.googleblog.com/2015/04/just-say-no-to-more-end-to-end-tests.html), but now let’s move on.
 
 ### Simple Android application
 
@@ -109,7 +109,11 @@ In `when` block we have to call method that we want to test with parameters that
 
 ## Then Block
 
-Now it is time to verify if tested objects return value that we expect. But first we have to store result of tested method in property `val result` and then examine it in the `then` block. To check expected value we have to do an assertion. In this case returned object is RxJava 2 Observable but we can convert it easily to `TestObserver` which is a class that provides assertion methods. I am checking if returned value is `true` otherwise test will fail.
+It is a time to verify if tested object return value that we expect. But first we have to store result of tested method in a property `val result` and then examine it in the `then` block. Now we can do an assertion which checks if result value is the value that we expect. It will throws an error when assertion won’t be satisfied and test will fail.
+
+In this case returned object is RxJava 2 Observable but we can convert it easily to `TestObserver` which is a class that provides assertion methods. I am checking if result value is `true` otherwise test will fail. 
+
+Testing RxJava Observables is a topic for a separate article and I won’t go into more details here.
 
 ```
     @Test
@@ -142,7 +146,7 @@ When the assertion from `then` block won't be satisfied then test will fail with
   <img src="assets/ide_failure.png" alt="Passed test in IDE"/>
 </p>
 
-We have an information that expected value should be `true ` but actual value returned by tested object was `false`.
+We have an information that expected value should be `true` but actual value returned by tested object was `false`.
 
 ```
 java.lang.AssertionError: 
