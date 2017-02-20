@@ -151,7 +151,7 @@ Actual: false (class: Boolean) (latch = 0, values = 1, errors = 0, completions =
 We also can see that failed test has name `login with correct login and password` and is in the class `LoginRepositoryTest`. Assertion has failed at line `20` in file `LoginRepositoryTest.kt`. Thanks to such informative error message we can figure out exactly which assertion was not satisfied and fix tested object.
 
 ```
-	at com.example.unittesting.entity.login.LoginRepositoryTest
+at com.example.unittesting.entity.login.LoginRepositoryTest
 .login with correct login and password(LoginRepositoryTest.kt:20)
 ```
 
