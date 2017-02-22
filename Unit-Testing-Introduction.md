@@ -160,8 +160,11 @@ We also can see that failed test has name `login with correct login and password
 at com.example.unittesting.entity.login.LoginRepositoryTest
 .login with correct login and password(LoginRepositoryTest.kt:20)
 ```
+
 ## Conclusion
 
 At this point you are ready to write your first very basic unit test, run it and examine what went wrong when it fails. Stay tuned for next more advanced topics. If you have found some errors feel free to create a Pull Request. You can also propose next testing related topic by creating an [Issue](https://github.com/dbacinski/Android-Testing-With-Kotlin/issues/new).
+
+If you like my article, please don’t forget to give a :star:.
 
 #### Next: Unit Testing with Mockito 2 [Coming Soon]
