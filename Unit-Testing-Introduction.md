@@ -30,7 +30,7 @@ Now when we have an application to be tested we can create our first test. We wi
 
 ## Your first test
 
-To create our first test we have to create class with public method annotated with `@org.junit.Test` in `/src/test/kotlin` folder. In this way we tell JUnit4 where the test code is located. We can start with checking whether our app allows us to login with correct data. We want to instrument [LoginRepository](app/src/main/java/com/example/unittesting/entity/login/LoginRepository.java), to do that I have to create [LoginRepositoryTest](/app/src/test/kotlin/com/example/unittesting/entity/login/LoginRepositoryTest.kt) class with test method. At the beggining we want to test if it is possible to sign in with correct credentials, so I have created test method with name `login with correct login and password`.
+To create our first test we have to create class with public method annotated with `@org.junit.Test` in `/src/test/kotlin` folder. In this way we tell JUnit4 where the test code is located. We can start with checking whether our app allows us to login with correct data. We want to instrument [LoginRepository](app/src/main/java/com/example/unittesting/entity/login/LoginRepository.java), to do that I have to create [LoginRepositoryTest](/app/src/test/kotlin/com/example/unittesting/entity/login/LoginRepositoryTest.kt) class with test method. At the beginning we want to test if it is possible to sign in with correct credentials, so I have created test method with name `login with correct login and password`.
 
 ```
 class LoginRepositoryTest {
@@ -160,5 +160,10 @@ We also can see that failed test has name `login with correct login and password
 at com.example.unittesting.entity.login.LoginRepositoryTest
 .login with correct login and password(LoginRepositoryTest.kt:20)
 ```
+## Conclusion
+
+At this point you are ready to write your first very basic unit test, run it and examine what went wrong when it fails. Stay tuned for next more advanced topics. If you have found some errors feel free to create a Pull Request. You can also propose next testing related topic by creating an [Issue](https://github.com/dbacinski/Android-Testing-With-Kotlin/issues/new).
+
+## Next: Unit Testing with Mockito 2 [Coming Soon]
 
 ## Next: Unit Testing with Mockito 2 [Coming Soon]
