@@ -109,7 +109,7 @@ In `when` block we have to call method that we want to test with parameters that
 
 ## Then Block
 
-It is a time to verify if tested object return value that we expect. But first we have to store result of tested method in a property `val result` and then examine it in the `then` block. Now we can do an assertion which checks if result value is the value that we expect. It will throws an error when assertion won’t be satisfied and test will fail.
+It is a time to verify if tested object return value that we expect. But first we have to store result of tested method in a property `val result` and then examine it in the `then` block. Now we can do an assertion which checks if result value is the value that we expect. It will throw an error when assertion won’t be satisfied and test will fail.
 
 In this case returned object is RxJava 2 Observable but we can convert it easily to `TestObserver` which is a class that provides assertion methods. I am checking if result value is `true` otherwise test will fail. 
 
