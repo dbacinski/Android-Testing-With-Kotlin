@@ -4,11 +4,11 @@
 
 This project serves as an example for set of articles about testing:
 
-#### [1. Introduction to Unit Testing with Kotlin](/Unit-Testing-Introduction.md)
+#### [1. Introduction to Unit Testing with Kotlin](/docs/Unit-Testing-Introduction.md)
 
-#### [2. Unit Testing with Mockito 2 \[Work in Progress\]](/Unit-Testing-Mockito.md)
+#### [2. Unit Testing with Mockito 2 \[Work in Progress\]](/docs/Unit-Testing-Mockito.md)
 
-#### [3. Clean Architecture with Model View Presenter \[Work in Progress\]](/Clean-Architecture.md)
+#### [3. Clean Architecture with Model View Presenter \[Work in Progress\]](/docs/Clean-Architecture.md)
 
 
 
