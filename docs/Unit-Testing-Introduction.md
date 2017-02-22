@@ -21,7 +21,7 @@ If you want to read more about test types you can read [this article] (https://t
 Before creating any test I want to introduce you to an simple Android app that provides a login screen. It has two inputs for login and password, and it validates those inputs. When the inputs are valid we can sign in with correct data or get an error that credentials are incorrect. I have chosen MVP architecture, which will help us to write very fast test that does not depend on Android framework. If you are not familiar with this architecture then please read [this article](http://macoscope.com/blog/model-view-presenter-architecture-in-android-applications/).
 
 <p align="center">
-  <img src="assets/login_validation.png" alt="Sample application with validation error" width="33%" height="33%"/>
+  <img src="/assets/login_validation.png" alt="Sample application with validation error" width="33%" height="33%"/>
 </p>
 
 ## Project setup
@@ -135,7 +135,7 @@ We can run a test by pressing `Ctrl + Shift + F10` in Android Studio/IntelliJ or
 After running test that we have just written you should get a green bar in IDE or `BUILD SUCCESSFUL` output in the Terminal.
 
 <p align="center">
-  <img src="assets/ide_success.png" alt="Passed test in IDE"/>
+  <img src="/assets/ide_success.png" alt="Passed test in IDE"/>
 </p>
 
 ## Test failure
@@ -143,7 +143,7 @@ After running test that we have just written you should get a green bar in IDE o
 When the assertion from `then` block won't be satisfied then test will fail with the following output:
 
 <p align="center">
-  <img src="assets/ide_failure.png" alt="Passed test in IDE"/>
+  <img src="/assets/ide_failure.png" alt="Passed test in IDE"/>
 </p>
 
 We have an information that expected value should be `true` but actual value returned by tested object was `false`.
