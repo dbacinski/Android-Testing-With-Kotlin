@@ -109,7 +109,7 @@ In `when` block we have to call method that we want to test with parameters that
 
 ## Then Block
 
-It is a time to verify if tested object return value that we expect. But first we have to store result of tested method in a property `val result` and then examine it in the `then` block. Now we can do an assertion which checks if result value is the value that we expect. It will throw an error when assertion won’t be satisfied and test will fail.
+It is time to verify if tested object return value that we expect. But first we have to store result of tested method in a property `val result` and then examine it in the `then` block. Now we can do an assertion which checks if result value is the value that we expect. It will throw an error when assertion won’t be satisfied and test will fail.
 
 In this case returned object is RxJava 2 Observable but we can convert it easily to `TestObserver` which is a class that provides assertion methods. I am checking if result value is `true` otherwise test will fail. 
 
@@ -132,7 +132,7 @@ Testing RxJava Observables is a topic for a separate article and I won’t go in
 
 We can run a test by pressing `Ctrl + Shift + F10` in Android Studio/IntelliJ or from a Terminal using command `./gradlew test`.
 
-After running test that we have just written you should get a green bar in IDE or `BUILD SUCCESSFUL` output in the Terminal.
+After running test that we have just written, you should get a green bar in IDE or `BUILD SUCCESSFUL` output in the Terminal.
 
 <p align="center">
   <img src="/assets/ide_success.png" alt="Passed test in IDE"/>
@@ -154,7 +154,7 @@ Values at position 0 differ; Expected: true (class: Boolean),
 Actual: false (class: Boolean) (latch = 0, values = 1, errors = 0, completions = 1)
 ```
 
-We also can see that failed test has name `login with correct login and password` and is in the class `LoginRepositoryTest`. Assertion has failed at line `20` in file `LoginRepositoryTest.kt`. Thanks to such informative error message we can figure out exactly which assertion was not satisfied and fix tested object.
+We also can see that failed test has the name `login with correct login and password` and is in the class `LoginRepositoryTest`. Assertion has failed at line `20` in file `LoginRepositoryTest.kt`. Thanks to such an informative error message, we can figure out exactly which assertion was not satisfied and fix the tested object.
 
 ```
 at com.example.unittesting.entity.login.LoginRepositoryTest
@@ -163,7 +163,7 @@ at com.example.unittesting.entity.login.LoginRepositoryTest
 
 ## Conclusion
 
-At this point you are ready to write your first very basic unit test, run it and examine what went wrong when it fails. Stay tuned for next more advanced topics. If you have found some errors feel free to create a Pull Request. You can also propose next testing related topic by creating an [Issue](https://github.com/dbacinski/Android-Testing-With-Kotlin/issues/new).
+At this point you are ready to write your first very basic unit test, run it and examine what went wrong when it failed. Stay tuned for next more advanced topics. If you have found some errors feel free to create a Pull Request. You can also propose next testing related topic by creating an [Issue](https://github.com/dbacinski/Android-Testing-With-Kotlin/issues/new).
 
 If you like my article, please don’t forget to give a :star:.
 
