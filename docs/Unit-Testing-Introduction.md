@@ -2,7 +2,7 @@
 
 Have you ever heard good stuff about unit testing and finally you want to learn about it? This is a place for you! 
 
-Join me and I will guide you through basic theory of unit testing. I assume that you are a developer who knows how to  create Android applications but do not have any experience with automatic testing.
+Join me and I will guide you through basic theory of unit testing. I assume that you are a developer who knows how to  create Android applications but does not have any experience with automatic testing.
 
 ## What is a Unit Test
 
