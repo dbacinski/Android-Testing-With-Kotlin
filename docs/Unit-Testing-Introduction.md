@@ -18,7 +18,7 @@ If you want to read more about test types you can read [this article] (https://t
 
 ### Simple Android application
 
-Before creating any test I want to introduce you to an simple Android app that provides a login screen. It has two inputs for login and password, and it validates those inputs. When the inputs are valid we can sign in with correct data or get an error that credentials are incorrect. I have chosen MVP architecture, which will help us to write very fast test that does not depend on Android framework. If you are not familiar with this architecture then please read [this article](http://macoscope.com/blog/model-view-presenter-architecture-in-android-applications/).
+Before creating any test I want to introduce you to a simple Android app that provides a login screen. It has two inputs for login and password, and it validates those inputs. When the inputs are valid we can sign in with correct data or get an error that credentials are incorrect. I have chosen MVP architecture, which will help us to write very fast test that does not depend on Android framework. If you are not familiar with this architecture then please read [this article](http://macoscope.com/blog/model-view-presenter-architecture-in-android-applications/).
 
 <p align="center">
   <img src="/assets/login_validation.png" alt="Sample application with validation error" width="33%" height="33%"/>
