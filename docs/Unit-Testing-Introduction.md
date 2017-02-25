@@ -30,7 +30,7 @@ Now when we have an application to be tested we can create our first test. We wi
 
 ## Your first test
 
-To create our first test we have to create class with public method annotated with `@org.junit.Test` in `/src/test/kotlin` folder. In this way we tell JUnit4 where the test code is located. We can start with checking whether our app allows us to login with correct data. We want to instrument [LoginRepository](/app/src/main/java/com/example/unittesting/entity/login/LoginRepository.java), to do that I have to create [LoginRepositoryTest](/app/src/test/kotlin/com/example/unittesting/entity/login/LoginRepositoryTest.kt) class with test method. At the beginning we want to test if it is possible to sign in with correct credentials, so I have created test method with name `login with correct login and password`.
+To create our first test we have to create a class with public method annotated with `@org.junit.Test` in `/src/test/kotlin` folder. This way we tell JUnit4 where the test code is located. We can start with checking whether our app allows us to login with correct data. We want to instrument [LoginRepository](/app/src/main/java/com/example/unittesting/entity/login/LoginRepository.java), to do that I have to create [LoginRepositoryTest](/app/src/test/kotlin/com/example/unittesting/entity/login/LoginRepositoryTest.kt) class with test method. At the beginning we want to test if it is possible to sign in with correct credentials, so I have created test method with name `login with correct login and password`.
 
 ```
 class LoginRepositoryTest {
@@ -41,7 +41,7 @@ class LoginRepositoryTest {
     }
 }
 ```
-In Kotlin we can name test with natural names like `login with correct login and password` but it only applies to code which is run on JVM. Thankfully unit tests are run on JVM and we can use such descriptive names. 
+In Kotlin we can name test with natural names like `login with correct login and password` but it only applies to code which is ran on JVM. Thankfully unit tests are ran on JVM and we can use such descriptive names. 
 
 ## Test structure
 
@@ -51,7 +51,7 @@ Each test should be created from the following blocks:
 - Act/When - in which we will call single method on tested object
 - Assert/Then - in which we will check result of the test, either pass or fail
 
-JUnit4 does not separate test blocks in any way so it is convenient to add comments to a test code. Especially if you are just beginning your journey with tests.
+JUnit4 does not separate test blocks in any way, so it is convenient to add comments to a test code. Especially, if you are just beginning your journey with tests.
 
 ```
     @Test
@@ -68,9 +68,9 @@ JUnit4 does not separate test blocks in any way so it is convenient to add comme
 
 Our test begins with `given` block in which we will prepare our test data and create tested object. 
 
-I am [creating instance](https://kotlinlang.org/docs/reference/classes.html#creating-instances-of-classes) of tested object `LoginRepository` and assign it to [read-only property](https://kotlinlang.org/docs/reference/properties.html#declaring-properties). It is very convenient to distinguish tested object from test parameters so I am calling it `objectUnderTest`. You can also name it: `sut`, `subject` or `target`. Choose the name which fits you best just be consistent across your project.
+I am [creating instance](https://kotlinlang.org/docs/reference/classes.html#creating-instances-of-classes) of tested object `LoginRepository` and assign it to [read-only property](https://kotlinlang.org/docs/reference/properties.html#declaring-properties). It is very convenient to distinguish tested object from test parameters, so I am calling it `objectUnderTest`. You can also name it: `sut`, `subject` or `target`. Choose the name which fits you best just be consistent across your project.
 
-When we have instance of tested object then we can move on to test parameters. That will be `correctLogin` with value `'dbacinski'` and `correctPassword` with value `'correct'`. It is very important to choose meaningful names for each test parameter, it must be clear what kind of values each of them contains.
+When we have instance of tested object, then we can move on to test parameters. That will be `correctLogin` with value `'dbacinski'` and `correctPassword` with value `'correct'`. It is very important to choose meaningful names for each test parameter, it must be clear what kind of values each of them contain.
 
 ```
     @Test
