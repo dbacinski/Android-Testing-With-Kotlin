@@ -165,6 +165,7 @@ at com.example.unittesting.entity.login.LoginRepositoryTest
 
 At this point you are ready to write your first very basic unit test, run it and examine what went wrong when it failed. Stay tuned for next more advanced topics. If you have found some errors feel free to create a Pull Request. You can also propose next testing related topic by creating an [Issue](https://github.com/dbacinski/Android-Testing-With-Kotlin/issues/new).
 
-If you like my article, please don’t forget to give a :star:.
+If you like my article, please don’t forget to give a [:star:](https://github.com/dbacinski/Android-Testing-With-Kotlin/).
+
 
 #### Next: Unit Testing with Mockito 2 [Coming Soon]
