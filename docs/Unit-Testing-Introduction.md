@@ -41,7 +41,9 @@ class LoginRepositoryTest {
     }
 }
 ```
-In Kotlin we can name test with natural names like `login with correct login and password` but it only applies to code which is ran on JVM. Thankfully unit tests are ran on JVM and we can use such descriptive names. 
+In Kotlin we can name test with natural names like `login with correct login and password` but it only applies to code which is ran on JVM. Thankfully unit tests are ran on JVM and we can use such descriptive names.
+
+> Tip: To suppress error `Identifier not allowed for Android project...` displayed by Android Studio you have to got to `Preferences... -> Editor -> Inspections -> Kotlin` and disable `Illegal Android Identifier` inspection.
 
 ## Test structure
 
