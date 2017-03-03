@@ -7,21 +7,22 @@ import com.example.unittesting.domain.login.LoginUseCase
 import com.example.unittesting.entity.login.LoginCredentials
 import com.example.unittesting.entity.login.LoginRepository
 import com.example.unittesting.entity.login.LoginValidator
+import io.reactivex.Observable
 import io.reactivex.ObservableTransformer
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyInt
 import org.mockito.BDDMockito.given
-import org.mockito.Mockito
 import org.mockito.Mockito.*
 
 class LoginPresenterTest {
 
-    val loginViewMock: LoginView = Mockito.mock(LoginView::class.java)
-    val resourcesMock: Resources = Mockito.mock(Resources::class.java)
-    val schedulersFactoryMock: SchedulersFactory = Mockito.mock(SchedulersFactory::class.java)
+    val loginViewMock: LoginView = mock(LoginView::class.java)
+    val resourcesStub: Resources = mock(Resources::class.java)
+    val schedulersFactoryStub: SchedulersFactory = mock(SchedulersFactory::class.java)
+    val loginRepositoryStub = mock(LoginRepository::class.java)
 
-    val objectUnderTest = LoginPresenter(ResourceProvider(resourcesMock), LoginValidator(), LoginUseCase(LoginRepository()), schedulersFactoryMock)
+    val objectUnderTest = LoginPresenter(ResourceProvider(resourcesStub), LoginValidator(), LoginUseCase(loginRepositoryStub), schedulersFactoryStub)
 
     @Before
     fun setUp() {
@@ -32,64 +33,60 @@ class LoginPresenterTest {
     fun `login with correct data`() {
         //given
         objectUnderTest.createView(loginViewMock)
-        val login = "dbacinski"
-        val password = "correct"
+        given(loginRepositoryStub.login(any(),any())).willReturn(Observable.just(true))
         //when
-        objectUnderTest.attemptLogin(LoginCredentials().withLogin(login).withPassword(password))
+        objectUnderTest.attemptLogin(LoginCredentials().withLogin("correct").withPassword("correct"))
         //then
-        verify(loginViewMock, timeout(5000)).onLoginSuccessful()
+        verify(loginViewMock).onLoginSuccessful()
     }
 
     @Test
     fun `login with correct data with progress indication`() {
         //given
         objectUnderTest.createView(loginViewMock)
-        val login = "any"
-        val password = "anyValidPassword"
+        given(loginRepositoryStub.login(any(),any())).willReturn(Observable.just(true))
         //when
-        objectUnderTest.attemptLogin(LoginCredentials().withLogin(login).withPassword(password))
+        objectUnderTest.attemptLogin(LoginCredentials().withLogin("correct").withPassword("correct"))
         //then
         val ordered = inOrder(loginViewMock)
         ordered.verify(loginViewMock).showProgress()
-        ordered.verify(loginViewMock, timeout(5000)).hideProgress()
+        ordered.verify(loginViewMock).hideProgress()
     }
 
     @Test
-    fun `show validation error for incorrect data`() {
+    fun `login with valid but incorrect data`() {
         //given
         objectUnderTest.createView(loginViewMock)
-        given(resourcesMock.getString(anyInt())).willReturn("error")
-        val login = "dbacinski"
-        val password = "incorrect"
+        given(resourcesStub.getString(anyInt())).willReturn("error")
+        given(loginRepositoryStub.login(any(),any())).willReturn(Observable.just(false))
         //when
-        objectUnderTest.attemptLogin(LoginCredentials().withLogin(login).withPassword(password))
+        objectUnderTest.attemptLogin(LoginCredentials().withLogin("valid").withPassword("incorrectPassword"))
         //then
         val ordered = inOrder(loginViewMock)
-        ordered.verify(loginViewMock).showPasswordError(null)
-        ordered.verify(loginViewMock, timeout(5000)).showPasswordError("error")
+        ordered.verify(loginViewMock).showLoginError(null)
+        ordered.verify(loginViewMock).showPasswordError("error")
     }
 
     @Test
     fun `show validation error for empty email`() {
         //given
         objectUnderTest.createView(loginViewMock)
-        given(resourcesMock.getString(anyInt())).willReturn("error")
+        given(resourcesStub.getString(anyInt())).willReturn("error")
         val login = ""
-        val password = "validPassword"
         //when
-        objectUnderTest.attemptLogin(LoginCredentials().withLogin(login).withPassword(password))
+        objectUnderTest.attemptLogin(LoginCredentials().withLogin(login).withPassword("validPassword"))
         //then
         verify(loginViewMock).showLoginError("error")
         verify(loginViewMock).showPasswordError(null)
     }
 
     @Test
-    fun `show validation error for empty email and password`() {
+    fun `show validation error for empty email and too short password`() {
         //given
         objectUnderTest.createView(loginViewMock)
-        given(resourcesMock.getString(anyInt())).willReturn("error")
+        given(resourcesStub.getString(anyInt())).willReturn("error")
         val login = ""
-        val password = ""
+        val password = "short"
         //when
         objectUnderTest.attemptLogin(LoginCredentials().withLogin(login).withPassword(password))
         //then
@@ -98,20 +95,19 @@ class LoginPresenterTest {
     }
 
     @Test
-    fun `show validation error for empty password`() {
+    fun `show validation error for too short password`() {
         //given
         objectUnderTest.createView(loginViewMock)
-        given(resourcesMock.getString(anyInt())).willReturn("error")
-        val login = "dbacinski"
-        val password = ""
+        given(resourcesStub.getString(anyInt())).willReturn("error")
+        val password = "short"
         //when
-        objectUnderTest.attemptLogin(LoginCredentials().withLogin(login).withPassword(password))
+        objectUnderTest.attemptLogin(LoginCredentials().withLogin("valid").withPassword(password))
         //then
         verify(loginViewMock).showLoginError(null)
         verify(loginViewMock).showPasswordError("error")
     }
 
     private fun removeObserveOnMainThreadScheduler() {
-        given(schedulersFactoryMock.createMainThreadSchedulerTransformer<Boolean>()).willReturn(ObservableTransformer { it })
+        given(schedulersFactoryStub.createMainThreadSchedulerTransformer<Boolean>()).willReturn(ObservableTransformer { it })
     }
 }
