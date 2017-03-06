@@ -27,12 +27,12 @@ class LoginPresenterTest {
     @Before
     fun setUp() {
         removeObserveOnMainThreadScheduler()
+        objectUnderTest.createView(loginViewMock)
     }
 
     @Test
     fun `login with correct data`() {
         //given
-        objectUnderTest.createView(loginViewMock)
         given(loginRepositoryStub.login(any(), any())).willReturn(Observable.just(true))
         //when
         objectUnderTest.attemptLogin(LoginCredentials().withLogin("correct").withPassword("correct"))
@@ -43,7 +43,6 @@ class LoginPresenterTest {
     @Test
     fun `login with correct data with progress indication`() {
         //given
-        objectUnderTest.createView(loginViewMock)
         given(loginRepositoryStub.login(any(), any())).willReturn(Observable.just(true))
         //when
         objectUnderTest.attemptLogin(LoginCredentials().withLogin("correct").withPassword("correct"))
@@ -56,7 +55,6 @@ class LoginPresenterTest {
     @Test
     fun `login with valid but incorrect data`() {
         //given
-        objectUnderTest.createView(loginViewMock)
         given(resourcesStub.getString(anyInt())).willReturn("error")
         given(loginRepositoryStub.login(any(), any())).willReturn(Observable.just(false))
         //when
@@ -70,7 +68,6 @@ class LoginPresenterTest {
     @Test
     fun `show validation error for empty email`() {
         //given
-        objectUnderTest.createView(loginViewMock)
         given(resourcesStub.getString(anyInt())).willReturn("error")
         val login = ""
         //when
@@ -83,7 +80,6 @@ class LoginPresenterTest {
     @Test
     fun `show validation error for empty email and too short password`() {
         //given
-        objectUnderTest.createView(loginViewMock)
         given(resourcesStub.getString(anyInt())).willReturn("error")
         val login = ""
         val password = "short"
@@ -97,7 +93,6 @@ class LoginPresenterTest {
     @Test
     fun `show validation error for too short password`() {
         //given
-        objectUnderTest.createView(loginViewMock)
         given(resourcesStub.getString(anyInt())).willReturn("error")
         val password = "short"
         //when
