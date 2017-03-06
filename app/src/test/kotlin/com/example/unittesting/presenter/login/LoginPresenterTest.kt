@@ -33,7 +33,7 @@ class LoginPresenterTest {
     fun `login with correct data`() {
         //given
         objectUnderTest.createView(loginViewMock)
-        given(loginRepositoryStub.login(any(),any())).willReturn(Observable.just(true))
+        given(loginRepositoryStub.login(any(), any())).willReturn(Observable.just(true))
         //when
         objectUnderTest.attemptLogin(LoginCredentials().withLogin("correct").withPassword("correct"))
         //then
@@ -44,7 +44,7 @@ class LoginPresenterTest {
     fun `login with correct data with progress indication`() {
         //given
         objectUnderTest.createView(loginViewMock)
-        given(loginRepositoryStub.login(any(),any())).willReturn(Observable.just(true))
+        given(loginRepositoryStub.login(any(), any())).willReturn(Observable.just(true))
         //when
         objectUnderTest.attemptLogin(LoginCredentials().withLogin("correct").withPassword("correct"))
         //then
@@ -58,7 +58,7 @@ class LoginPresenterTest {
         //given
         objectUnderTest.createView(loginViewMock)
         given(resourcesStub.getString(anyInt())).willReturn("error")
-        given(loginRepositoryStub.login(any(),any())).willReturn(Observable.just(false))
+        given(loginRepositoryStub.login(any(), any())).willReturn(Observable.just(false))
         //when
         objectUnderTest.attemptLogin(LoginCredentials().withLogin("valid").withPassword("incorrectPassword"))
         //then

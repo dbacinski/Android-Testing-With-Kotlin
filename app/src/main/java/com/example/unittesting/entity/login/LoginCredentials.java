@@ -1,6 +1,7 @@
 package com.example.unittesting.entity.login;
 
 public class LoginCredentials {
+
     public String login;
     public String password;
 

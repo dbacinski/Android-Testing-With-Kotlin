@@ -39,6 +39,7 @@ public class LoginPresenter extends BasePresenter<LoginView> {
         loginUseCase.loginWithCredentialsWithStatus(loginCredentials)
                 .compose(schedulersFactory.<Boolean>createMainThreadSchedulerTransformer())
                 .subscribe(new Consumer<Boolean>() {
+
                     @Override
                     public void accept(Boolean result) throws Exception {
                         getView().hideProgress();

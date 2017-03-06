@@ -12,6 +12,7 @@ public class SchedulersFactory {
     }
 
     static class SchedulersTransformer<T> implements ObservableTransformer<T, T> {
+
         @Override
         public ObservableSource<T> apply(Observable<T> upstream) {
             return upstream.observeOn(AndroidSchedulers.mainThread());
