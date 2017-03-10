@@ -32,7 +32,7 @@ Now when we have an application to be tested we can create our first test. We wi
 
 To create our first test we have to create a class with public method annotated with `@org.junit.Test` in `/src/test/kotlin` folder. This way we tell JUnit4 where the test code is located. We can start with checking whether our app allows us to login with correct data. We want to instrument [LoginRepository](/app/src/main/java/com/example/unittesting/entity/login/LoginRepository.java), to do that I have to create [LoginRepositoryTest](/app/src/test/kotlin/com/example/unittesting/entity/login/LoginRepositoryTest.kt) class with test method. At the beginning we want to test if it is possible to sign in with correct credentials, so I have created test method with name `login with correct login and password`.
 
-```
+``` kotlin
 class LoginRepositoryTest {
 
     @Test
@@ -55,16 +55,16 @@ Each test should be created from the following blocks:
 
 JUnit4 does not separate test blocks in any way, so it is convenient to add comments to a test code. Especially, if you are just beginning your journey with tests.
 
-```
-    @Test
-    fun `login with correct login and password`() {
-      //given
-      
-      //when
-      
-      //then
+``` kotlin
+@Test
+fun `login with correct login and password`() {
+    //given
+
+    //when
+
+    //then
     
-    }
+}
 ```
 ## Given Block
 
@@ -74,18 +74,18 @@ I am [creating instance](https://kotlinlang.org/docs/reference/classes.html#crea
 
 When we have instance of tested object, then we can move on to test parameters. That will be `correctLogin` with value `'dbacinski'` and `correctPassword` with value `'correct'`. It is very important to choose meaningful names for each test parameter, it must be clear what kind of values each of them contain.
 
-```
-    @Test
-    fun `login with correct login and password`() {
-        //given
-        val objectUnderTest = LoginRepository()
-        val correctLogin = 'dbacinski'
-        val correctPassword = `correct`
-        //when
+``` kotlin
+@Test
+fun `login with correct login and password`() {
+    //given
+    val objectUnderTest = LoginRepository()
+    val correctLogin = 'dbacinski'
+    val correctPassword = `correct`
+    //when
 
-        //then
+    //then
         
-    }
+}
 ```
 
 Now `given` block is finished and we can move on.
@@ -95,18 +95,18 @@ Now `given` block is finished and we can move on.
 In `when` block we have to call method that we want to test with parameters that were prepared in the `given` block. So I call method `objectUnderTest.login(correctLogin, correctPassword)`. In `when` block we should have only one line of code to make it clear what is actually being tested. 
 
 
-```
-    @Test
-    fun `login with correct login and password`() {
-        //given
-        val objectUnderTest = LoginRepository()
-        val correctLogin = 'dbacinski'
-        val correctPassword = `correct`
-        //when
-        objectUnderTest.login(correctLogin, correctPassword)
-        //then
+``` kotlin
+@Test
+fun `login with correct login and password`() {
+    //given
+    val objectUnderTest = LoginRepository()
+    val correctLogin = 'dbacinski'
+    val correctPassword = `correct`
+    //when
+    objectUnderTest.login(correctLogin, correctPassword)
+    //then
         
-    }
+}
 ```
 
 ## Then Block
@@ -117,18 +117,18 @@ In this case returned object is RxJava 2 Observable but we can convert it easily
 
 Testing RxJava Observables is a topic for a separate article and I won’t go into more details here.
 
-```
-    @Test
-    fun `login with correct login and password`() {
-        //given
-        val objectUnderTest = LoginRepository()
-        val correctLogin = 'dbacinski'
-        val correctPassword = `correct`
-        //when
-        val result = objectUnderTest.login(login, password)
-        //then
-        result.test().assertResult(true)
-    }
+``` kotlin
+@Test
+fun `login with correct login and password`() {
+    //given
+    val objectUnderTest = LoginRepository()
+    val correctLogin = 'dbacinski'
+    val correctPassword = `correct`
+    //when
+    val result = objectUnderTest.login(login, password)
+    //then
+    result.test().assertResult(true)
+}
 ```
 ## Running test
 
@@ -150,7 +150,7 @@ When the assertion from `then` block won't be satisfied then test will fail with
 
 We have an information that expected value should be `true` but actual value returned by tested object was `false`.
 
-```
+``` java
 java.lang.AssertionError: 
 Values at position 0 differ; Expected: true (class: Boolean),
 Actual: false (class: Boolean) (latch = 0, values = 1, errors = 0, completions = 1)
@@ -158,7 +158,7 @@ Actual: false (class: Boolean) (latch = 0, values = 1, errors = 0, completions =
 
 We also can see that failed test has the name `login with correct login and password` and is in the class `LoginRepositoryTest`. Assertion has failed at line `20` in file `LoginRepositoryTest.kt`. Thanks to such an informative error message, we can figure out exactly which assertion was not satisfied and fix the tested object.
 
-```
+``` java
 at com.example.unittesting.entity.login.LoginRepositoryTest
 .login with correct login and password(LoginRepositoryTest.kt:20)
 ```
