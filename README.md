@@ -8,7 +8,7 @@ This project serves as an example for set of articles about testing:
 
 #### 2. Unit Testing with Mockito 2 \[Comming Soon\]
 
-#### 3. Clean Architecture with Model View Presenter \[Cominng Soon\]
+[![CircleCI](https://circleci.com/gh/dbacinski/Android-Testing-With-Kotlin.svg?style=svg)](https://circleci.com/gh/dbacinski/Android-Testing-With-Kotlin)
 
 
 
