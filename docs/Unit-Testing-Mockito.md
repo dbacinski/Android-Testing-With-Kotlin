@@ -23,6 +23,10 @@ fun `empty password is invalid`() {
 ```
 While testing State we do not make any assumption on how object is implemented. We treat object as black box and check if it returns correct values for given input. This kind of test is most preferable because we can change class implementation and test won’t fail until our expectations are still met. Thanks to that this kind of test are least painful to maintain.
 
+<p align="center">
+  <img src="/assets/state.png" height="50%" width="50%" alt="State"/>
+</p>
+
 ## Testing Interactions 
 
 Unfortunately oftentimes object do not expose almost any state but it forward processing to its dependencies. This is very common in MVP architecture in which Presenter do not return values from methods but invokes callbacks on View object. Take a look at [LoginPresenter]() which exposes method `public void attemptLogin(LoginCredentials loginCredentials)`. There is no return type but when we will look at its implementation ten we will see that this method  invokes method `onLoginSuccessful()` on [LoginView]() when login is successful.
