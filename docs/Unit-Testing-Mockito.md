@@ -19,3 +19,5 @@ Test doubles are objects that replaces dependencies of object under test. They h
 <p align="center">
   <img src="/assets/stub_mock.png" alt="Stub and Mock"/>
 </p>
+
+If you like my article, please don’t forget to [give a :star:](https://github.com/dbacinski/Android-Testing-With-Kotlin/).
