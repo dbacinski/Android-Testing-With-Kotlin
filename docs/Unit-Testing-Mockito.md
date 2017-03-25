@@ -8,7 +8,7 @@ At the beginning a bit of theory. There are two ways how you can verify if teste
 
 ## Testing State
 
-Testing State is verifying that the object under test returns the right results when calling certain methods. In example when we want to test if [LoginValidator]() works correctly, then we can call method `validatePassword` and check if returned value is equal to what we have expected.
+Testing State is verifying that the object under test returns the right results after calling certain methods. In example when we want to test if [LoginValidator]() works correctly, then we can call method `validatePassword` and check if returned value is equal to what we have expected. Assertion is done using [AssertJ](http://joel-costigliola.github.io/assertj/assertj-core-quick-start.html) library which provides fluent api for common objects.
 
 ```kotlin
 @Test
@@ -21,8 +21,6 @@ fun `empty password is invalid`() {
     assertThat(result).isFalse()
 }
 ```
-//TODO AssertJ
-
 While testing State we do not make any assumption on how object is implemented. We treat object as black box and check if it returns correct values for given input. This kind of test is most preferable because we can change class implementation and test won’t fail until our expectations are still met. Thanks to that this kind of test are least painful to maintain.
 
 ## Testing Interactions 
