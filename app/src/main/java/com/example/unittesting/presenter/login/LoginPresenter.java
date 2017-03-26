@@ -41,10 +41,10 @@ public class LoginPresenter extends BasePresenter<LoginView> {
                 .subscribe(new Consumer<Boolean>() {
 
                     @Override
-                    public void accept(Boolean result) throws Exception {
+                    public void accept(Boolean success) throws Exception {
                         getView().hideProgress();
 
-                        if (result) {
+                        if (success) {
                             getView().onLoginSuccessful();
                         } else {
                             getView().showPasswordError(resourceProvider.getString(R.string.error_incorrect_password));
