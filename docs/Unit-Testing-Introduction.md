@@ -14,7 +14,7 @@ But wait a second! You probably heard about UI and Integration Tests which do ex
 
 Unit Test is focused on testing only set of classes (one or more) that fulfils single functionality (domain) and do not depend on libraries or framework code. You do not want to test libraries that you are using (at least not in an Unit Test), they should just work! You want to focus only on your precious code and prove yourself that there are no hidden bugs.
 
-If you want to read more about test types you can read [this article] (https://testing.googleblog.com/2015/04/just-say-no-to-more-end-to-end-tests.html), but now let’s move on.
+If you want to read more about test types you can read [this article](https://testing.googleblog.com/2015/04/just-say-no-to-more-end-to-end-tests.html), but now let’s move on.
 
 ### Simple Android application
 
