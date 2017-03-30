@@ -29,9 +29,17 @@ While testing State we do not make any assumption on how object is implemented. 
 
 ## Testing Interactions 
 
-Unfortunately oftentimes object do not expose almost any state but it forward processing to its dependencies. This is very common in MVP architecture in which Presenter do not return values from methods but invokes callbacks on View object. Take a look at [LoginPresenter]() which exposes method `public void attemptLogin(LoginCredentials loginCredentials)`. There is no return type but when we will look at its implementation ten we will see that this method  invokes method `onLoginSuccessful()` on [LoginView]() when login is successful.
+Unfortunately oftentimes object do not expose almost any state but it forward processing to its dependencies. This is very common in MVP architecture in which Presenter do not return values from methods but invokes callbacks on View object. Take a look at [LoginPresenter]() which exposes method `public void attemptLogin(LoginCredentials loginCredentials)`. There is no return type but when we will look at its implementation ten we will see that this method  invokes method `onLoginSuccessful()` on [LoginView]() when login is successful. So the only way to check if login was successful is by checking if method `onLoginSuccess()` was called.
 
 ```java
+private LoginUseCase loginUseCase;
+
+public LoginPresenter(LoginUseCase loginUseCase) {
+        this.loginUseCase = loginUseCase;
+}
+
+[...]
+
 public void attemptLogin(LoginCredentials loginCredentials) {
     loginUseCase.loginWithCredentialsWithStatus(loginCredentials)
                 .subscribe(success -> {
@@ -42,6 +50,7 @@ public void attemptLogin(LoginCredentials loginCredentials) {
                     });
 }
 ```
+
 
 
 verifying that object under test calls certain methods
