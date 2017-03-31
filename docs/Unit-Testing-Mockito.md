@@ -29,39 +29,75 @@ While testing State we do not make any assumption on how object is implemented. 
 
 ## Testing Interactions 
 
-Unfortunately oftentimes object do not expose almost any state but it forward processing to its dependencies. This is very common in MVP architecture in which Presenter do not return values from methods but invokes callbacks on View object. Take a look at [LoginPresenter]() which exposes method `public void attemptLogin(LoginCredentials loginCredentials)`. There is no return type but when we will look at its implementation ten we will see that this method  invokes method `onLoginSuccessful()` on [LoginView]() when login is successful. So the only way to check if login was successful is by checking if method `onLoginSuccess()` was actually called.
-
+Unfortunately oftentimes object do not expose almost any state but it forward processing to its dependencies. This is very common in MVP architecture in which Presenter do not return values from methods but invokes callbacks on View object. Take a look at [LoginPresenter]() which exposes method `public void attemptLogin(LoginCredentials loginCredentials)`. There is no return type but when we will look at its implementation then we will see that this method  invokes method `onLoginSuccessful()` on [LoginView]() when login is successful. So the only way to check if login was successful is by checking if method `onLoginSuccess()` was actually called. 
 ```java
-private LoginUseCase loginUseCase;
+private LoginView view
 
-public LoginPresenter(LoginUseCase loginUseCase) {
-        this.loginUseCase = loginUseCase;
+public void createView(T view) {
+    this.view = view;
 }
-
-[...]
 
 public void attemptLogin(LoginCredentials loginCredentials) {
     loginUseCase.loginWithCredentialsWithStatus(loginCredentials)
                 .subscribe(success -> {
                         if (success) {
-                            getView().onLoginSuccessful();
+                            view.onLoginSuccessful();
                         } 
 [...]
                     });
 }
 ```
 
+We can test such case by introducing test double. Test doubles are objects that replaces dependencies of object under test. They help to test object in separation from real dependencies. To be able to test if LoginPresenter is calling `onLoginSuccessful()` method we have to introduce test double called Mock object.
 
+### Mock 
 
-verifying that object under test calls certain methods
-
-Test doubles are objects that replaces dependencies of object under test. They help to test object in separation from real dependencies.  Most notable test doubles are:
-
-- Stub - returns values configured in test to object under test
-- Mock - informs test that object under test has called certain methods
+Mock object provides a method to check if object under test has called certain methods. It is possible to implement Mock object by ourself but it do not make much sense because there is a great library called [Mockito](mockito.org) which will do it for us. 
 
 <p align="center">
-  <img src="/assets/stub_mock.png" alt="Stub and Mock"/>
+  <img src="/assets/mock.png" alt="Stub and Mock"/>
 </p>
+
+First we have to create a mock object for our dependency LoginView. It can be done by using `Mockito.mock(LoginView::class.java)`. Such instance we have to pass to tested object instead of a real dependency. In this case we are passing mock view by calling `createView(loginViewMock)`.
+
+```kotlin
+val loginViewMock: LoginView = mock(LoginView::class.java)
+val objectUnderTest = LoginPresenter()
+
+
+@Test
+fun `login with correct data`() {
+    //given
+    objectUnderTest.createView(loginViewMock)
+}
+```
+Next we have to call tested method which is `attemptLogin` and we can finally verify if `onLoginSuccessful()` was called. To do that we have to use Mockito method called `verify`. To verify if `onLoginSuccessful()` was called on mock object we have to use such syntax `Mockito.verify(loginViewMock).onLoginSuccessful()`
+
+```kotlin
+val loginViewMock: LoginView = Mockito.mock(LoginView::class.java)
+val objectUnderTest = LoginPresenter()
+
+
+@Test
+fun `login with correct data`() {
+    //given
+    objectUnderTest.createView(loginViewMock)
+    //when
+    objectUnderTest.attemptLogin(LoginCredentials()
+        .withLogin(correctLogin)
+        .withPassword(correctPassword))
+    //then
+    Mockito.verify(loginViewMock).onLoginSuccessful()
+}
+```
+### Stub 
+Stub returns values configured in test to object under test
+
+If you want to learn more about test doubles there is a [great article](http://pragmatists.pl/blog/2017/03/test-doubles-fakes-mocks-or-stubs/) by [Pragmatist](https://twitter.com/pragmatists) about it. 
+
+#### Test Double - Mock
+Let's get back to the tested class  [LoginPresenter]().
+
+
 
 If you like my article, please don’t forget to [give a :star:](https://github.com/dbacinski/Android-Testing-With-Kotlin/).
