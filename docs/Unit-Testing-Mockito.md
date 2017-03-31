@@ -81,6 +81,8 @@ val objectUnderTest = LoginPresenter()
 @Test
 fun `login with correct data`() {
     //given
+    val correctLogin = "dbacinski"
+    val correctPassword = "correct"
     objectUnderTest.createView(loginViewMock)
     //when
     objectUnderTest.attemptLogin(LoginCredentials()
