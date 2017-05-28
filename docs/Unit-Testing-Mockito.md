@@ -95,13 +95,63 @@ fun `login with correct data`() {
     Mockito.verify(loginViewMock).onLoginSuccessful()
 }
 ```
-### Stub 
-Stub returns values configured in test to object under test
+ 
+Now we are able to test how `LoginPresenter` interacts with `LoginView`. 
+ 
+`LoginPresenter` is also calling `LoginUseCase which is then calling `LoginRepository`. The problem is that in the real application this would involve network communication and we do not want to depend on that in the Unit Tests. This is where we can use next test double called Stub.
+ 
+### Stub
+ 
+Stub is a test double which returns configured values and it is passed to object under test. When a given method is invoked on stub then it returns values that were previously set in test. This gives us full control over returned values from methods that were invoke on the dependency.
+<p align="center">
+  <img src="/assets/stub.png" alt="Stub and Mock"/>
+</p>
+ 
+Let’s look at LoginUseCase. It invokes `login` method on `LoginRepository` with `login` and `password` parameters. As a result we are getting ` Observable<Boolean>` with an information if login was successful or not. In unit test we would like to have control over returned value from `login` method. To do that we have to replace real `LoginRepository` with it’s stubbed version. This is where Mockito can help us again, with automatically generated stub object.
+ 
+```java
+public class LoginUseCase {
+
+    LoginRepository loginRepository;
+
+    public LoginUseCase(LoginRepository loginRepository) {
+        this.loginRepository = loginRepository;
+    }
+
+    public Observable<Boolean> loginWithCredentialsWithStatus(final LoginCredentials credentials) {
+        checkNotNull(credentials);
+        return loginRepository.login(credentials.login, credentials.password);
+    }
+ 
+[...]
+}
+```
+In order to create stubbed object with Mockito we have to invoke Mockito.mock() method. 
+ 
+What? You said mock()? Yes, the name of the method is a bit misleading, because Mockito is creating objects that can be both Stubs and Mocks using single method called `mock()`. This probably why many people confused Stubs and Mocks, especially the one who didn’t read anything about testing and has started using Mockito. You can read more about diffrence between mocks and stubs in this [article](https://martinfowler.com/articles/mocksArentStubs.html) by Martin Fowler.
+ 
+Getting back to the topic. We would like to force `loginRepositorStub` stub to always return `true` for any input values. To do that we have at least two options. We can use `when` syntax and do it like this `Mockito.`when`(loginRepositoryStub.login(any(), any())).thenReturn(Observable.just(true))`. The problem is that `when` is a keyword in Kotlin and it doesn’t look good. Fortunately Mockito also supports [BDD](https://en.wikipedia.org/wiki/Behavior-driven_development) syntax and we can achive the same result using `given(loginRepositoryStub.login(any(), any())).willReturn(Observable.just(true))`.
+ 
+ 
+```kotlin
+val loginRepositoryStub = mock(LoginRepository::class.java)
+val loginViewMock: LoginView = mock(LoginView::class.java)
+ 
+val objectUnderTest = LoginPresenter(LoginUseCase(loginRepositoryStub))
+ 
+@Test
+fun `login with correct data`() {
+    //given
+    objectUnderTest.createView(loginViewMock)
+    given(loginRepositoryStub.login(any(), any())).willReturn(Observable.just(true))
+    //when    objectUnderTest.attemptLogin(LoginCredentials().withLogin("correct").withPassword("correct"))
+    //then
+    verify(loginViewMock).onLoginSuccessful()
+}
+```
+*Work in progress*
  
 If you want to learn more about test doubles there is a [great article](http://pragmatists.pl/blog/2017/03/test-doubles-fakes-mocks-or-stubs/) by [Pragmatist](https://twitter.com/pragmatists) about it. 
- 
-#### Test Double - Mock
-Let's get back to the tested class  [LoginPresenter]().
  
  
  
