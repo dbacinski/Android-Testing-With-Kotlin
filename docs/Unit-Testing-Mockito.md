@@ -58,7 +58,7 @@ We can test such case by introducing test double. Test doubles are objects that 
 Mock object provides a method to check if object under test has called certain methods. It is possible to implement Mock object by ourself but it does not make much sense because there is a great library called [Mockito](mockito.org) which will do it for us. 
  
 <p align="center">
-  <img src="/assets/mock.png" alt="Stub and Mock"/>
+  <img src="/assets/mock.png" alt="Mock"/>
 </p>
  
 First we have to create a mock object for our dependency LoginView. It can be done by using `loginViewMock = Mockito.mock(LoginView::class.java)`. We have to pass it to tested object instead of a real dependency. In this case we are passing mock view by calling `createView(loginViewMock)`.
@@ -104,7 +104,7 @@ Now we are able to test how `LoginPresenter` interacts with `LoginView`.
  
 Stub is a test double which returns configured values and it is passed to object under test. When a given method is invoked on stub then it returns values that were previously set in test. This gives us full control over returned values from methods that were invoke on the dependency.
 <p align="center">
-  <img src="/assets/stub.png" alt="Stub and Mock"/>
+  <img src="/assets/stub_mock.png" alt="Stub and Mock"/>
 </p>
  
 Let’s look at LoginUseCase. It invokes `login` method on `LoginRepository` with `login` and `password` parameters. As a result we are getting ` Observable<Boolean>` with an information if login was successful or not. In unit test we would like to have control over returned value from `login` method. To do that we have to replace real `LoginRepository` with it’s stubbed version. This is where Mockito can help us again, with automatically generated stub object.
