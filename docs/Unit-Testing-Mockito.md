@@ -144,7 +144,8 @@ fun `login with correct data`() {
     //given
     objectUnderTest.createView(loginViewMock)
     given(loginRepositoryStub.login(any(), any())).willReturn(Observable.just(true))
-    //when    objectUnderTest.attemptLogin(LoginCredentials().withLogin("correct").withPassword("correct"))
+    //when
+    objectUnderTest.attemptLogin(LoginCredentials().withLogin("correct").withPassword("correct"))
     //then
     verify(loginViewMock).onLoginSuccessful()
 }
