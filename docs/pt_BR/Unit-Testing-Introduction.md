@@ -1,6 +1,9 @@
+### Traduzido por:
+- Lucas Soares Candalo (@candalo)
+
 # Introdução à Testes Unitários com Kotlin
 
-Você já ouviu boas coisas sobre testes unitários e deseja finalmente aprender sobre eles? Esse é o lugar pra você! 
+Você já ouviu boas coisas sobre testes unitários e deseja finalmente aprender sobre eles? Esse é o lugar pra você!
 
 Junte-se à mim e eu irei guiá-lo através da teoria básica dos testes unitários. Eu assumo que você é um desenvolvedor que sabe como criar aplicativos Android mas não tem nenhuma experiência com testes unitários.
 
@@ -35,7 +38,7 @@ class LoginRepositoryTest {
 
     @Test
     fun `login with correct login and password`() {
-    
+
     }
 }
 ```
@@ -61,7 +64,7 @@ fun `login with correct login and password`() {
     //when
 
     //then
-    
+
 }
 ```
 ## Bloco Given
@@ -82,7 +85,7 @@ fun `login with correct login and password`() {
     //when
 
     //then
-        
+
 }
 ```
 
@@ -103,7 +106,7 @@ fun `login with correct login and password`() {
     //when
     objectUnderTest.login(correctLogin, correctPassword)
     //then
-        
+
 }
 ```
 
@@ -146,7 +149,7 @@ Quando a asserção do bloco `then` não for satisfeita então o teste irá falh
 Nós temos uma informação que o valor esperado deve ser `true` mas o valor atual retornado pelo objeto testado é `false`.
 
 ``` java
-java.lang.AssertionError: 
+java.lang.AssertionError:
 Values at position 0 differ; Expected: true (class: Boolean),
 Actual: false (class: Boolean) (latch = 0, values = 1, errors = 0, completions = 1)
 ```
