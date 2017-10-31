@@ -2,19 +2,17 @@ package com.example.unittesting.login.view;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.example.unittesting.R;
 import com.example.unittesting.ResourceProvider;
 import com.example.unittesting.SchedulersFactory;
 import com.example.unittesting.login.model.LoginCredentials;
-import com.example.unittesting.login.presenter.LoginPresenter;
 import com.example.unittesting.login.model.LoginRepository;
 import com.example.unittesting.login.model.LoginUseCase;
 import com.example.unittesting.login.model.LoginValidator;
+import com.example.unittesting.login.presenter.LoginPresenter;
 import com.example.unittesting.login.presenter.LoginView;
 
 import butterknife.BindView;
@@ -45,16 +43,12 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
         ButterKnife.bind(this);
 
-        passwordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-
-            @Override
-            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.login) {
-                    LoginActivity.this.onSignInClick();
-                    return true;
-                }
-                return false;
+        passwordView.setOnEditorActionListener((textView, id, keyEvent) -> {
+            if (id == R.id.login) {
+                onSignInClick();
+                return true;
             }
+            return false;
         });
 
         loginPresenter = new LoginPresenter(new ResourceProvider(getResources()), new LoginValidator(), new LoginUseCase(new LoginRepository()), new SchedulersFactory());
