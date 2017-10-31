@@ -1,4 +1,4 @@
-package com.example.unittesting.domain;
+package com.example.unittesting;
 
 import android.content.res.Resources;
 import android.support.annotation.StringRes;

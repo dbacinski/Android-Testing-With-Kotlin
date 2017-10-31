@@ -1,12 +1,12 @@
-package com.example.unittesting.presenter.login
+package com.example.unittesting.login.presenter
 
 import android.content.res.Resources
-import com.example.unittesting.domain.ResourceProvider
-import com.example.unittesting.domain.SchedulersFactory
-import com.example.unittesting.domain.login.LoginUseCase
-import com.example.unittesting.entity.login.LoginCredentials
-import com.example.unittesting.entity.login.LoginRepository
-import com.example.unittesting.entity.login.LoginValidator
+import com.example.unittesting.ResourceProvider
+import com.example.unittesting.SchedulersFactory
+import com.example.unittesting.login.model.LoginCredentials
+import com.example.unittesting.login.model.LoginRepository
+import com.example.unittesting.login.model.LoginUseCase
+import com.example.unittesting.login.model.LoginValidator
 import io.reactivex.Observable
 import io.reactivex.ObservableTransformer
 import org.junit.Before

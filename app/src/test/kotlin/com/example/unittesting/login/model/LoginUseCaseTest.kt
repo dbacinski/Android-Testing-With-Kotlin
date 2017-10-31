@@ -1,6 +1,5 @@
-package com.example.unittesting.domain.login
+package com.example.unittesting.login.model
 
-import com.example.unittesting.entity.login.LoginRepository
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.catchThrowable
 import org.junit.Test

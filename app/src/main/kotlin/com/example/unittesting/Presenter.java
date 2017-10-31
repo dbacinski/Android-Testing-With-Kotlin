@@ -1,4 +1,4 @@
-package com.example.unittesting.presenter;
+package com.example.unittesting;
 
 interface Presenter<T> {
 

@@ -1,4 +1,4 @@
-package com.example.unittesting.presenter
+package com.example.unittesting
 
 import io.reactivex.Observable
 import org.assertj.core.api.Assertions.assertThat

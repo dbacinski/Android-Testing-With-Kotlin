@@ -1,4 +1,4 @@
-package com.example.unittesting.presenter.login;
+package com.example.unittesting.login.presenter;
 
 public interface LoginView {
 

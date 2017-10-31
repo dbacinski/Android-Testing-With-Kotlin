@@ -34,7 +34,7 @@ android {
 }
 
 jacocoAndroidUnitTestReport {
-    excludes += ['**/com/example/unittesting/view/**']
+    excludes += ['**/com/example/unittesting/login/view/**']
 }
 
 dependencies {

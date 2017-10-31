@@ -1,4 +1,4 @@
-package com.example.unittesting.entity.login;
+package com.example.unittesting.login.model;
 
 import java.util.concurrent.TimeUnit;
 

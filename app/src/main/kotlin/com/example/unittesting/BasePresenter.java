@@ -1,4 +1,4 @@
-package com.example.unittesting.presenter;
+package com.example.unittesting;
 
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;

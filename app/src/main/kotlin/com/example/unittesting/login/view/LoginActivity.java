@@ -1,4 +1,4 @@
-package com.example.unittesting.view.login;
+package com.example.unittesting.login.view;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,14 +8,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.unittesting.R;
-import com.example.unittesting.domain.ResourceProvider;
-import com.example.unittesting.domain.SchedulersFactory;
-import com.example.unittesting.domain.login.LoginUseCase;
-import com.example.unittesting.entity.login.LoginCredentials;
-import com.example.unittesting.entity.login.LoginRepository;
-import com.example.unittesting.entity.login.LoginValidator;
-import com.example.unittesting.presenter.login.LoginPresenter;
-import com.example.unittesting.presenter.login.LoginView;
+import com.example.unittesting.ResourceProvider;
+import com.example.unittesting.SchedulersFactory;
+import com.example.unittesting.login.model.LoginCredentials;
+import com.example.unittesting.login.presenter.LoginPresenter;
+import com.example.unittesting.login.model.LoginRepository;
+import com.example.unittesting.login.model.LoginUseCase;
+import com.example.unittesting.login.model.LoginValidator;
+import com.example.unittesting.login.presenter.LoginView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

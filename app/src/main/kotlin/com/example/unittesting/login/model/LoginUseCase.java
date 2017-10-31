@@ -1,7 +1,4 @@
-package com.example.unittesting.domain.login;
-
-import com.example.unittesting.entity.login.LoginCredentials;
-import com.example.unittesting.entity.login.LoginRepository;
+package com.example.unittesting.login.model;
 
 import io.reactivex.Observable;
 
