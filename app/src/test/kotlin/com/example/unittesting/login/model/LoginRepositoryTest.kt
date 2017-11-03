@@ -1,7 +1,7 @@
 package com.example.unittesting.login.model
 
-import com.example.unittesting.login.model.LoginRepository.CORRECT_LOGIN
-import com.example.unittesting.login.model.LoginRepository.CORRECT_PASSWORD
+import com.example.unittesting.login.model.LoginRepository.Companion.CORRECT_LOGIN
+import com.example.unittesting.login.model.LoginRepository.Companion.CORRECT_PASSWORD
 import org.junit.Test
 
 class LoginRepositoryTest {

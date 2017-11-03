@@ -27,7 +27,7 @@ class BasePresenterTest {
         //when
         objectUnderTest.destroyView()
         //then
-        assertThat(objectUnderTest.getView()).isNull()
+        assertThat(objectUnderTest.view).isNull()
     }
 }
 

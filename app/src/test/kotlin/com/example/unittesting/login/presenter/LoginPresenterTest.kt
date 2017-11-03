@@ -7,6 +7,7 @@ import com.example.unittesting.login.model.LoginCredentials
 import com.example.unittesting.login.model.LoginRepository
 import com.example.unittesting.login.model.LoginUseCase
 import com.example.unittesting.login.model.LoginValidator
+import com.nhaarman.mockito_kotlin.any
 import io.reactivex.Observable
 import io.reactivex.ObservableTransformer
 import org.junit.Before
@@ -35,7 +36,7 @@ class LoginPresenterTest {
         //given
         given(loginRepositoryStub.login(any(), any())).willReturn(Observable.just(true))
         //when
-        objectUnderTest.attemptLogin(LoginCredentials().withLogin("correct").withPassword("correct"))
+        objectUnderTest.attemptLogin(LoginCredentials(login = "correct", password = "correct"))
         //then
         verify(loginViewMock).onLoginSuccessful()
     }
@@ -45,7 +46,7 @@ class LoginPresenterTest {
         //given
         given(loginRepositoryStub.login(any(), any())).willReturn(Observable.just(true))
         //when
-        objectUnderTest.attemptLogin(LoginCredentials().withLogin("correct").withPassword("correct"))
+        objectUnderTest.attemptLogin(LoginCredentials(login = "correct", password = "correct"))
         //then
         val ordered = inOrder(loginViewMock)
         ordered.verify(loginViewMock).showProgress()
@@ -58,7 +59,7 @@ class LoginPresenterTest {
         given(resourcesStub.getString(anyInt())).willReturn("error")
         given(loginRepositoryStub.login(any(), any())).willReturn(Observable.just(false))
         //when
-        objectUnderTest.attemptLogin(LoginCredentials().withLogin("valid").withPassword("incorrectPassword"))
+        objectUnderTest.attemptLogin(LoginCredentials(login = "valid", password = "incorrectPassword"))
         //then
         val ordered = inOrder(loginViewMock)
         ordered.verify(loginViewMock).showLoginError(null)
@@ -71,7 +72,7 @@ class LoginPresenterTest {
         given(resourcesStub.getString(anyInt())).willReturn("error")
         val login = ""
         //when
-        objectUnderTest.attemptLogin(LoginCredentials().withLogin(login).withPassword("validPassword"))
+        objectUnderTest.attemptLogin(LoginCredentials(login = login, password = "validPassword"))
         //then
         verify(loginViewMock).showLoginError("error")
         verify(loginViewMock).showPasswordError(null)
@@ -84,7 +85,7 @@ class LoginPresenterTest {
         val login = ""
         val password = "short"
         //when
-        objectUnderTest.attemptLogin(LoginCredentials().withLogin(login).withPassword(password))
+        objectUnderTest.attemptLogin(LoginCredentials(login = login, password = password))
         //then
         verify(loginViewMock).showLoginError("error")
         verify(loginViewMock).showPasswordError("error")
@@ -96,7 +97,7 @@ class LoginPresenterTest {
         given(resourcesStub.getString(anyInt())).willReturn("error")
         val password = "short"
         //when
-        objectUnderTest.attemptLogin(LoginCredentials().withLogin("valid").withPassword(password))
+        objectUnderTest.attemptLogin(LoginCredentials(login = "valid", password = password))
         //then
         verify(loginViewMock).showLoginError(null)
         verify(loginViewMock).showPasswordError("error")

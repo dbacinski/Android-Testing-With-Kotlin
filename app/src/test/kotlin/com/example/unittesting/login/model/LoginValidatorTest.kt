@@ -1,7 +1,6 @@
 package com.example.unittesting.login.model
 
 import org.assertj.core.api.Assertions.assertThat
-import org.assertj.core.api.Assertions.catchThrowable
 import org.junit.Test
 
 class LoginValidatorTest {
@@ -25,27 +24,11 @@ class LoginValidatorTest {
     }
 
     @Test
-    fun `throws exception for null login`() {
-        //when
-        val catchThrowable = catchThrowable { objectUnderTest.validateLogin(null) }
-        //then
-        assertThat(catchThrowable).isInstanceOf(NullPointerException::class.java)
-    }
-
-    @Test
     fun `empty password is invalid`() {
         //when
         val result = objectUnderTest.validatePassword("")
         //then
         assertThat(result).isFalse()
-    }
-
-    @Test
-    fun `throws exception for null password`() {
-        //when
-        val catchThrowable = catchThrowable { objectUnderTest.validatePassword(null) }
-        //then
-        assertThat(catchThrowable).isInstanceOf(NullPointerException::class.java)
     }
 
     @Test
