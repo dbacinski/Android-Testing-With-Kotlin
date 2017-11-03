@@ -41,7 +41,7 @@ class LoginActivity : AppCompatActivity(), LoginView {
         ButterKnife.bind(this)
 
         passwordView.setOnEditorActionListener { _, id, _ ->
-            if (id == R.id.login) {
+            if (id == 1) {
                 onSignInClick()
                 true
             } else {
