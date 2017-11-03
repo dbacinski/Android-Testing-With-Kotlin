@@ -1,11 +1,11 @@
 dependencies:
   pre:
-     - echo y | android update sdk --no-ui --all --filter "android-24,build-tools-25.0.2"
+     - echo y | android update sdk --no-ui --all --filter "android-27,build-tools-26.0.2"
      - chmod +x gradlew
 test:
   override:
     - ./gradlew build test
-    - cp ./*/build/outputs/apk/*.apk $CIRCLE_ARTIFACTS/
+    - cp ./*/build/outputs/apk/release/*.apk $CIRCLE_ARTIFACTS/
     - cp ./*/build/test-results/testDebugUnitTest/*.xml $CIRCLE_TEST_REPORTS/
   post:
     - bash <(curl -s https://codecov.io/bash)
