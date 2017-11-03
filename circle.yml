@@ -1,6 +1,6 @@
 dependencies:
   pre:
-     - echo y | android update sdk --no-ui --all --filter "android-24,build-tools-25.0.2"
+     - echo y | android update sdk --no-ui --all --filter "android-27,build-tools-26.0.2"
      - chmod +x gradlew
 test:
   override:
