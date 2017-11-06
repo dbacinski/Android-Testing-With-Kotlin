@@ -32,7 +32,7 @@ Agora que nós temos uma aplicação a ser testada nós podemos criar nosso prim
 
 ## Seu primeiro teste
 
-Para criar nosso primeiro teste nós temos que criar uma classe com métodos públicos anotados com `@org.junit.Test` na pasta `/src/test/kotlin`. Desse modo, nós falamos para o JUnit4 onde os testes estão localizados. Nós podemos iniciar com a checagem se o nosso app nos permite logar com os dados corretos. Nós queremos instrumentar [LoginRepository](/app/src/main/java/com/example/unittesting/entity/login/LoginRepository.java), para fazer isso eu preciso criar a classe [LoginRepositoryTest](/app/src/test/kotlin/com/example/unittesting/entity/login/LoginRepositoryTest.kt) com um método de teste. No começo nós queremos testar se é posssível logar com as credenciais corretas, então eu criei um método de teste com o nome `login with correct login and password`.
+Para criar nosso primeiro teste nós temos que criar uma classe com métodos públicos anotados com `@org.junit.Test` na pasta `/src/test/kotlin`. Desse modo, nós falamos para o JUnit4 onde os testes estão localizados. Nós podemos iniciar com a checagem se o nosso app nos permite logar com os dados corretos. Nós queremos instrumentar [LoginRepository](/app/src/main/kotlin/com/example/unittesting/login/presenter/LoginPresenter.kt), para fazer isso eu preciso criar a classe [LoginRepositoryTest](/app/src/test/kotlin/com/example/unittesting/login/presenter/LoginPresenterTest.kt) com um método de teste. No começo nós queremos testar se é posssível logar com as credenciais corretas, então eu criei um método de teste com o nome `login with correct login and password`.
 ``` kotlin
 class LoginRepositoryTest {
 
