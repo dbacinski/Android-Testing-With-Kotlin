@@ -30,7 +30,7 @@ Now when we have an application to be tested we can create our first test. We wi
 
 ## Your first test
 
-To create our first test we have to create a class with public method annotated with `@org.junit.Test` in `/src/test/kotlin` folder. This way we tell JUnit4 where the test code is located. We can start with checking whether our app allows us to login with correct data. We want to instrument [LoginRepository](/app/src/main/java/com/example/unittesting/entity/login/LoginRepository.java), to do that I have to create [LoginRepositoryTest](/app/src/test/kotlin/com/example/unittesting/entity/login/LoginRepositoryTest.kt) class with test method. At the beginning we want to test if it is possible to sign in with correct credentials, so I have created test method with name `login with correct login and password`.
+To create our first test we have to create a class with public method annotated with `@org.junit.Test` in `/src/test/kotlin` folder. This way we tell JUnit4 where the test code is located. We can start with checking whether our app allows us to login with correct data. We want to instrument [LoginRepository](/app/src/main/kotlin/com/example/unittesting/login/presenter/LoginPresenter.kt), to do that I have to create [LoginRepositoryTest](/app/src/test/kotlin/com/example/unittesting/login/presenter/LoginPresenterTest.kt) class with test method. At the beginning we want to test if it is possible to sign in with correct credentials, so I have created test method with name `login with correct login and password`.
 
 ``` kotlin
 class LoginRepositoryTest {
