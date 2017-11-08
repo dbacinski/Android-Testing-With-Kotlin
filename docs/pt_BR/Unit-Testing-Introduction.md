@@ -167,4 +167,5 @@ Nessa altura você já está pronto para escrever seu primeiro teste unitário b
 
 Se você gostou do meu artigo, por favor não se esqueça de [dar uma :star:](https://github.com/dbacinski/Android-Testing-With-Kotlin/).
 
-#### Próximo: Testes Unitários com Mockito 2 [Em Breve]
+#### Próximo: [Testes Unitários com Mockito 2](/docs/Unit-Testing-Mockito.md)
+
