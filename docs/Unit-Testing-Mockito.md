@@ -8,7 +8,7 @@ At the beginning a bit of theory. There are two ways how you can verify if teste
 
 ## Testing State
 
-Testing State is verifying that the object under test returns the right results after calling given methods. In example when we want to test if [LoginValidator]() works correctly, then we can call method `validatePassword` and check if returned value is equal to what we expect. Assertion is done using [AssertJ](http://joel-costigliola.github.io/assertj/assertj-core-quick-start.html) library which provides fluent api for common `Java` objects.
+Testing State is verifying that the object under test returns the right results after calling given methods. In example when we want to test if [LoginValidator](/app/src/main/kotlin/com/example/unittesting/login/model/LoginValidator.kt) works correctly, then we can call method `validatePassword` and check if returned value is equal to what we expect. Assertion is done using [AssertJ](http://joel-costigliola.github.io/assertj/assertj-core-quick-start.html) library which provides fluent api for common `Java` objects.
 
 ```kotlin
 @Test
@@ -29,7 +29,7 @@ While testing State we do not make any assumption on how object is implemented. 
 
 ## Testing Interactions 
 
-Unfortunately oftentimes object do not expose almost any state but it forwards processing to it’s dependencies. This is very common case in MVP architecture in which Presenter do not return any values from its methods but rather invokes callbacks on View interface. Take a look at [LoginPresenter]() which exposes method `public void attemptLogin(LoginCredentials loginCredentials)`. There is no return type but when we will look at its implementation then we will see that method `onLoginSuccessful()` from [LoginView]() is invoked when login is successful. So the only way to check if login was successful is to check if method `onLoginSuccess()` was actually called. 
+Unfortunately oftentimes object do not expose almost any state but it forwards processing to it’s dependencies. This is very common case in MVP architecture in which Presenter do not return any values from its methods but rather invokes callbacks on View interface. Take a look at [LoginPresenter](/app/src/main/kotlin/com/example/unittesting/login/presenter/LoginPresenter.kt) which exposes method `public void attemptLogin(LoginCredentials loginCredentials)`. There is no return type but when we will look at its implementation then we will see that method `onLoginSuccessful()` from [LoginView](/app/src/main/kotlin/com/example/unittesting/login/presenter/LoginView.kt) is invoked when login is successful. So the only way to check if login was successful is to check if method `onLoginSuccess()` was actually called. 
 ```java
 public class LoginPresenter {
 
@@ -57,7 +57,7 @@ To test if LoginPresenter calls `view.onLoginSuccessful()` method we have to int
 
 ### Mock 
 
-Mock object provides a way to check if object under test has called certain methods. It is possible to implement Mock object by ourself but it does not make much sense because there is a great library called [Mockito](mockito.org) which will do it for us. 
+Mock object provides a way to check if object under test has called certain methods. It is possible to implement Mock object by ourself but it does not make much sense because there is a great library called [Mockito](http://mockito.org) which will do it for us. 
 
 <p align="center">
   <img src="/assets/mock.png" alt="Mock"/>
