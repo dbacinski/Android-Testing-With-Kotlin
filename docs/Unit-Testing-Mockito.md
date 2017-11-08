@@ -51,7 +51,9 @@ public class LoginPresenter {
 }
 ```
 
-We can test such case by introducing test double. Test doubles are objects that replaces dependencies of object under test. They help to test object in separation from real dependencies. To test if LoginPresenter calls `view.onLoginSuccessful()` method we have to introduce test double called Mock object.
+We can test such case by introducing test double. Test doubles are objects that replaces dependencies of object under test. They help to test object in separation from real dependencies. If you want to learn more about test doubles there is a [great article](http://pragmatists.pl/blog/2017/03/test-doubles-fakes-mocks-or-stubs/) by [Pragmatist](https://twitter.com/pragmatists) about it. 
+
+To test if LoginPresenter calls `view.onLoginSuccessful()` method we have to introduce test double called Mock object.
 
 ### Mock 
 
@@ -152,7 +154,7 @@ fun `login with correct data`() {
 ```
 *Work in progress*
 
-If you want to learn more about test doubles there is a [great article](http://pragmatists.pl/blog/2017/03/test-doubles-fakes-mocks-or-stubs/) by [Pragmatist](https://twitter.com/pragmatists) about it. 
+
 
 
 
