@@ -173,4 +173,4 @@ At this point you are ready to write your first very basic unit test, run it and
 If you like my article, please don’t forget to [give a :star:](https://github.com/dbacinski/Android-Testing-With-Kotlin/).
 
 
-#### Next: Unit Testing with Mockito 2 [Coming Soon]
+#### Next: [Unit Testing with Mockito 2](/docs/Unit-Testing-Mockito.md)
