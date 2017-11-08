@@ -1,6 +1,6 @@
 # Unit Testing with Mockito 2
 
-#### [Previous: Introduction to Unit Testing with Kotlin](/docs/Unit-Testing-Introduction.md)
+#### Previous: [Introduction to Unit Testing with Kotlin](/docs/Unit-Testing-Introduction.md)
 
 In the [previous article](/docs/Unit-Testing-Introduction.md) you have learned how to write a simple unit test. Now it is a time to dive deeper and learn about testing state and interactions with help of testing library Mockito 2.
 
