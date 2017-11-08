@@ -100,7 +100,7 @@ fun `login with correct data`() {
 
 Now we are able to test how `LoginPresenter` interacts with `LoginView`. 
 
-`LoginPresenter` is also calling `LoginUseCase which is then calling `LoginRepository`. The problem is that in the real application this would cause network communication and we do not want to do it in the Unit Tests. This is where we can use next test double called Stub.
+`LoginPresenter` is also calling `LoginUseCase` which is then calling `LoginRepository`. The problem is that in the real application this would cause network communication and we do not want to do it in the Unit Tests. This is where we can use next test double called Stub.
 
 ### Stub
 
