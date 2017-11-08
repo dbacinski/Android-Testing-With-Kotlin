@@ -1,4 +1,4 @@
-# Unit Testing with Mockito 2 [Work in Progress]
+# Unit Testing with Mockito 2
 
 #### [Previous: Introduction to Unit Testing with Kotlin](/docs/Unit-Testing-Introduction.md)
 
