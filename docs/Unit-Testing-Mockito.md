@@ -132,8 +132,7 @@ In order to create stubbed object with Mockito we have to invoke Mockito.mock() 
 
 What? You said mock()? Yes, the name of the method is a bit misleading, because Mockito is creating objects that can be both Stubs and Mocks using single method called `mock()`. This probably why many people confused Stubs and Mocks. You can read more about diffrences between mocks and stubs in this [article](https://martinfowler.com/articles/mocksArentStubs.html) by Martin Fowler.
 
-Getting back to the topic. We would like to force `loginRepositorStub` stub to always return `true` for any input values. To do that we have at least two options. We can use `when` syntax and do it like this `Mockito.`when`(loginRepositoryStub.login(any(), any())).thenReturn(Observable.just(true))`. The problem is that `when` is a keyword in Kotlin and it doesn’t look good. Fortunately Mockito also supports [BDD](https://en.wikipedia.org/wiki/Behavior-driven_development) syntax and we can achive the same result using `given(loginRepositoryStub.login(any(), any())).willReturn(Observable.just(true))`.
-
+Getting back to the topic. We would like to force `loginRepositorStub` stub to always return `true` for any input values. To do that we have at least two options. We can use `when` syntax and do it like this `Mockito.`when`(loginRepositoryStub.login(any(), any())).thenReturn(Observable.just(true))`. The problem is that `when` is a keyword in Kotlin and it doesn’t look good. Fortunately Mockito also supports [BDD](https://en.wikipedia.org/wiki/Behavior-driven_development) syntax and we can achive the same result using `given(loginRepositoryStub.login(any(), any())).willReturn(Observable.just(true))`. Now for any credentials passed to login method we always get Observable with true value.
 
 ```kotlin
 val loginRepositoryStub = mock(LoginRepository::class.java)
@@ -152,10 +151,11 @@ fun `login with correct data`() {
     verify(loginViewMock).onLoginSuccessful()
 }
 ```
-*Work in progress*
+Thanks to `loginRepositoryStub` we have full control over external dependency and we can verify how our object works when login is successful (or not). We also do not have to rely on any unpredictable and slow source like backend API. This makes our test rock solid and lightning fast. Stubs are also very useful while testing state so do not be afraid to mix and match testing state and interactions.
 
+## Conclusion
 
-
+In this article you have learned how to use Mockito and AssertJ to test your objects. Always try to favor testing state over interactions, because it makes your tests much more stable and less sensitive to refactorings. Make use of Stubs to control your dependencies  and speed up your tests. Try to avoid Mocks where it is possible to test the same thing by checking object state and use AssertJ to make your assertions more readable. Stay tuned for next more advanced topics. If you have found some errors feel free to create a Pull Request. You can also propose next testing related topic by creating an [Issue](https://github.com/dbacinski/Android-Testing-With-Kotlin/issues/new).
 
 
 If you like my article, please don’t forget to [give a :star:](https://github.com/dbacinski/Android-Testing-With-Kotlin/).
