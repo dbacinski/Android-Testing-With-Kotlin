@@ -11,7 +11,7 @@ This project serves as an example for set of articles about testing:
 #### 3. [Migration of Android application from Java to Kotlin](https://github.com/dbacinski/Android-Testing-With-Kotlin/pull/9)
 
 
-[![CircleCI](https://circleci.com/gh/dbacinski/Android-Testing-With-Kotlin.svg?style=svg)](https://circleci.com/gh/dbacinski/Android-Testing-With-Kotlin) [![codecov](https://codecov.io/gh/dbacinski/Android-Testing-With-Kotlin/branch/master/graphs/badge.svg)](https://codecov.io/gh/dbacinski/Android-Testing-With-Kotlin)
+[![CircleCI](https://img.shields.io/circleci/project/github/dbacinski/Android-Testing-With-Kotlin.svg)](https://circleci.com/gh/dbacinski/Android-Testing-With-Kotlin) [![codecov](https://codecov.io/gh/dbacinski/Android-Testing-With-Kotlin/branch/master/graphs/badge.svg)](https://codecov.io/gh/dbacinski/Android-Testing-With-Kotlin)
 
 
 
